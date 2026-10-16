@@ -54,6 +54,20 @@ export function shanghaiDate(instant = new Date()) {
   return ['year', 'month', 'day'].map((type) => parts.find((part) => part.type === type).value).join('-');
 }
 
+/** Normalize source identity, decoding unreserved path escapes while preserving reserved characters. */
+export function sourceIdentity(value) {
+  const url = new URL(value);
+  const path = url.pathname.replace(/%([0-9a-f]{2})/gi, (_escape, hex) => {
+    const character = String.fromCharCode(Number.parseInt(hex, 16));
+    return /[a-z0-9._~-]/i.test(character) ? character : `%${hex.toUpperCase()}`;
+  }).replace(/\/+$/, '') || '/';
+  for (const key of [...url.searchParams.keys()]) {
+    if (/^utm_/i.test(key) || /^(fbclid|gclid|mc_cid|mc_eid)$/i.test(key)) url.searchParams.delete(key);
+  }
+  url.searchParams.sort();
+  return `${url.origin}${path}${url.searchParams.size ? `?${url.searchParams}` : ''}`;
+}
+
 /** Check IDs/keys for duplicates; append a diagnostic without changing the input. */
 function unique(items, key, label, errors) {
   const seen = new Set();
@@ -117,10 +131,7 @@ export function validateData(data, { today = shanghaiDate() } = {}) {
   /** Check evidence URL, dates, organizations and verified publication requirements. */
   function checkSources(sources, label, mustVerify, cutoff = today) {
     if (mustVerify && sources.length === 0) errors.push(`${label}: verified content requires sources`);
-    unique(sources, (source) => {
-      const url = new URL(source.url);
-      return `${url.origin}${url.pathname}`;
-    }, `${label} sources`, errors);
+    unique(sources, (source) => sourceIdentity(source.url), `${label} sources`, errors);
     for (const source of sources) {
       const url = new URL(source.url);
       if (url.protocol !== 'https:' || url.username || url.password) errors.push(`${label}: source must be a credential-free HTTPS URL`);
@@ -147,6 +158,7 @@ export function validateData(data, { today = shanghaiDate() } = {}) {
   }
   const allArticles = [];
   const allOpportunities = [];
+  const publishedEvents = new Map();
   for (const { path, data: report } of reportEntries) {
     const expectedPath = `reports/${report.date.slice(0, 4)}/${report.date.slice(5, 7)}/${report.date}.json`;
     if (path !== expectedPath) errors.push(`${path}: report date must match YYYY/MM/YYYY-MM-DD.json path`);
@@ -163,6 +175,12 @@ export function validateData(data, { today = shanghaiDate() } = {}) {
         errors.push(`${label}: taxonomy path must match at least one related technology`);
       }
       checkSources(article.sources, label, report.status === 'published' || article.verification_status === 'verified', report.date);
+      if (report.status === 'published' && article.sources[0]) {
+        const event = `${sourceIdentity(article.sources[0].url)}|${article.event_date}`;
+        const previous = publishedEvents.get(event);
+        if (previous && previous !== label) errors.push(`${label}: duplicate published event already in ${previous}`);
+        else publishedEvents.set(event, label);
+      }
       for (const opportunity of article.opportunities) {
         allOpportunities.push(opportunity);
         if (!opportunity.id.startsWith(`${article.id}-`)) errors.push(`${label}: opportunity ID must start with article ID`);

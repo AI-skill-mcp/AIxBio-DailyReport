@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "astro dev --host 127.0.0.1",
     "generate": "node scripts/generate.mjs",
+    "import:report": "node scripts/import-report.mjs",
     "validate": "node scripts/validate.mjs && node scripts/generate.mjs --check",
     "check": "pnpm validate && astro check",
     "test": "node --test scripts/*.test.mjs",

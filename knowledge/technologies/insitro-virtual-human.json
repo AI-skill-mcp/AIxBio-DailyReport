@@ -1,0 +1,33 @@
+{
+  "id": "insitro-virtual-human",
+  "name": "insitro Virtual Human 因果发现平台",
+  "english_name": "insitro Virtual Human",
+  "summary": "insitro用于整合人类遗传与多模态表型证据、提出疾病靶点假设的平台。",
+  "description": "按公司公开定位，Virtual Human关注疾病机制与靶点选择，TherML承担后续治疗方式设计；两者不应混称单一临床模型。",
+  "method": "整合人类遗传、表型、成像与遗传扰动证据，利用机器学习形成可继续检验的疾病机制和靶点假设。",
+  "limitations": "该条目仅总结公司公开方法定位；完整架构、训练数据与独立基准未在所核对材料中披露。因果性主张需结合具体实验，合作公告本身不能证明临床有效性。",
+  "technology_path": [
+    "ai-science",
+    "ai-biology",
+    "human-disease-biology",
+    "causal-target-discovery",
+    "multimodal-genetic-integration",
+    "virtual-human-causal-modeling"
+  ],
+  "sources": [
+    {
+      "title": "Introducing insitro’s TherML: Rapidly engineering the right therapeutic for the right target",
+      "url": "https://www.insitro.com/news/introducing-insitros-therml-rapidly-engineering-the-right-therapeutic-for-the-right-target/",
+      "publisher": "insitro",
+      "type": "official",
+      "published_at": "2026-01-12",
+      "checked_at": "2026-10-16",
+      "verification_status": "verified",
+      "verification_note": "核对页头01/12/2026及Virtual Human段落，支持遗传、表型、成像和扰动证据整合以及与TherML职责区分。另读官方Platform、Purpose页与3月23日Virtual Human说明作背景交叉检查；仅确认公司公开的方法定位，不把营销或细胞研究等同完整架构公开或临床验证。",
+      "organization_ids": [
+        "insitro"
+      ]
+    }
+  ],
+  "related_ids": []
+}

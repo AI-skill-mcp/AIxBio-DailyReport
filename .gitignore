@@ -6,3 +6,5 @@ dist/
 .env
 .env.*
 !.env.example
+/reports/.import-report.lock
+/reports/**/.import-report-*/

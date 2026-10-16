@@ -1,0 +1,33 @@
+{
+  "id": "openbind-blind-evaluation",
+  "name": "OpenBind 蛋白质配体结构盲测",
+  "english_name": "OpenBind Blind Protein-ligand Evaluation",
+  "summary": "在参考结合结构暂不公开时，联合评估配体姿态、相互作用与物理合理性的结构预测测试。",
+  "description": "这是评测方法条目，不是新模型或性能榜单。首轮挑战允许有既有结构信息的靶标，针对未公开参考结合结构进行预测。",
+  "method": "以X射线参考结构作为盲测依据；官方要求同时满足配体BiSyRMSD小于1.5 Å、lDDT-PLI大于0.8及全部PoseBusters有效性检查。",
+  "limitations": "单一靶标上的结构恢复不能推出跨靶标泛化、结合亲和力或治疗效果；已有结构信息也要求检查训练与评测暴露。挑战尚在进行，不能从开放公告推导性能结论。",
+  "technology_path": [
+    "ai-science",
+    "ai-biology",
+    "biomolecular-modeling",
+    "protein-ligand-evaluation",
+    "prospective-blind-benchmarking",
+    "multi-metric-structure-blind-tests"
+  ],
+  "sources": [
+    {
+      "title": "Announcing the first OpenBind Blind Challenge: Zika virus NS2B-NS3 protease",
+      "url": "https://openbind.uk/news/announcing-the-first-openbind-blind-challenge-zika-virus-ns2b-ns3-protease-2/",
+      "publisher": "OpenBind",
+      "type": "official",
+      "published_at": "2026-10-14",
+      "checked_at": "2026-10-16",
+      "verification_status": "verified",
+      "verification_note": "当前页面页头标注10月14日，时间表另列9月30日预告、10月14日开放、11月11日23:59 UTC阶段截止、12月16日23:59 UTC最终截止；分别记录，不把预告日期当当前版本发布日期。核对数据规模、参考结构暂不开放及三项联合评测条件；另读官方Concept页确认开放数据与盲测定位，无独立成绩可核验。",
+      "organization_ids": [
+        "openbind"
+      ]
+    }
+  ],
+  "related_ids": []
+}

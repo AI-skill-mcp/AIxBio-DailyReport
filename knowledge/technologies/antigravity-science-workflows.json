@@ -1,0 +1,33 @@
+{
+  "id": "antigravity-science-workflows",
+  "name": "Antigravity 科研智能体流程",
+  "english_name": "Antigravity Agentic Science Workflows",
+  "summary": "由研究者引导智能体协调数据库、文献与结构证据的科研工作台流程。",
+  "description": "Google将Antigravity定位为可扩展科研工作台。这里记录人机协作流程，不将某次候选发现当作已验证药物成果。",
+  "method": "研究者确定问题和证据要求，智能体协调信息检索、分析与共享结构查看，供研究者逐步审查与修订假设。",
+  "limitations": "公开材料是提供方的流程展示，未给出通用准确率或独立对照评估；抗微生物候选尚待湿实验验证。工具输出、功能推断与真实疗效须分别判断。",
+  "technology_path": [
+    "ai-science",
+    "ai-biology",
+    "life-science-evidence",
+    "scientific-workflow-orchestration",
+    "agent-assisted-evidence-synthesis",
+    "antigravity-science-orchestration"
+  ],
+  "sources": [
+    {
+      "title": "Accelerating the search for antimicrobial peptides with Google Antigravity",
+      "url": "https://deepmind.google/blog/accelerating-antimicrobial-discovery/",
+      "publisher": "Google DeepMind",
+      "type": "official",
+      "published_at": "2026-10-15",
+      "checked_at": "2026-10-16",
+      "verification_status": "verified",
+      "verification_note": "核对页头日期及 Collaborative intelligence、3D canvas 和结尾限制说明；原文明确候选仍在湿实验验证。另读官方科学平台 https://antigravity.google/use-cases/science 与其链接的 science-skills 仓库确认工具定位；平台页无明确发布日期，未用核验日替代发布日期。本条核验的是官方流程描述，不代表独立复现或抗菌疗效确认。",
+      "organization_ids": [
+        "google-deepmind"
+      ]
+    }
+  ],
+  "related_ids": []
+}

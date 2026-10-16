@@ -23,3 +23,9 @@
 - Pages Source=GitHub Actions，Custom domain=bioinformatic.tech；主域四条 GitHub Pages A 与 www CNAME 已配置，TTL 600。两个权威 DNS 和公共解析器已确认生效；DNS 检查通过，Enforce HTTPS 已启用。
 - 个人博客 ben-air.cn 与本站独立绑定域名，不互相冲突；未操作博客设置。
 - PR #1 已按用户授权合并，main 合并提交 36a9e594b394ca26c0fc4a91000de7a7afc7ac94；生产构建与 Pages 部署运行 38863512282、38864422060 均 success。2026-10-16 15:02（UTC+8）正常 TLS 校验通过，HTTPS 主域 200，HTTPS www 与两个 HTTP 地址均 301 到 HTTPS 主域。
+
+## 当前开发任务
+
+- 在 codex/daily-editorial-pipeline 分支接入原“AI × Bio 每日简报”任务，保留原调度，补充可靠归档与发布说明，并采编一期真实内容作端到端验证。
+- 原任务 ID、时间和运行环境仍待从任务编辑页核实，不能把当前交互环境的 SSH 权限当作定时任务具备写入权限的证据。
+- 已完成幂等导入、主来源事件去重与排他锁；26项测试和27文件Astro检查通过。首期2026-10-16含3条核验进展、1项编辑研究机会，知识共6条；本机构建、搜索、JSON/Markdown下载一致性通过，等待提交和生产发布核验。
