@@ -8,7 +8,7 @@ AI x Bioinformatic 方向交叉领域的前沿进展商业合作等相关知识�
 ### 网站功能
 
 - **每日简报**：按日期归档已核验内容，展示问题、方法、创新点、局限与一手来源。
-- **六层技术树**：按领域、方向、任务、方法、技术与具体模型逐级浏览。
+- **三层技术树**：按技术领域、技术路线、核心技术浏览；同一条目只有一个主要位置，区分预测、生成、评测与流程编排。
 - **技术详情**：解释原理、适用场景、局限、关联技术和出处。
 - **机会雷达**：从已发布简报提取研究与产品机会，保留证据与下一步。
 - **全文搜索**：Pagefind 对构建结果生成中英文索引，无需后端。
@@ -34,13 +34,14 @@ pnpm preview
 `reports/YYYY/MM/YYYY-MM-DD.json` 是每日档案的事实源，Markdown 与索引由 `pnpm generate` 确定性生成。`pnpm check` 会拒绝无效来源、引用错误及过期的生成文件。只有满足发布门禁的内容才进入公开网站、搜索和下载档案。
 
 - [内容标准、核验与新增日报](docs/content.md)
+- [三级结构索引清单](indexes/technology-navigation.md) · [JSON](indexes/technology-navigation.json) · [先更新索引再归类的流程](docs/classification.md)
 - [每日采编接入、重跑与失败处理](docs/daily-automation.md)
 - [GitHub Pages、DNS 和 HTTPS 上线步骤](docs/deployment.md)
 - [贡献流程](CONTRIBUTING.md)
 
 ```text
 reports/                   每日 JSON / Markdown 配对档案
-knowledge/                 六层分类、基础技术、组织与关系
+knowledge/                 归档分类、基础技术、组织与关系
 schemas/                   JSON Schema
 indexes/                   自动生成的时间轴与关联索引
 scripts/                   校验、生成与发布门禁测试

@@ -182,6 +182,28 @@ main { min-height: 60vh; }
 .tree-technologies { padding: 0 15px 12px 29px; }
 .tree-technologies a { display: flex; align-items: center; justify-content: space-between; gap: 15px; padding: 11px 13px; border: 1px solid #b9c5ac; background: #e0ebc8; color: var(--forest); font-size: 11px; line-height: 1.7; }
 .tree-technologies a:hover { background: var(--lime); }
+.tree-root > li + li { border-top: 1px solid #cdd5c5; }
+.tree-root > li > .tree-branch > summary .tree-label { font-size: 15px; }
+.tree-description { margin: 0 18px 15px 51px; color: var(--muted); font-size: 12px; line-height: 1.9; }
+.tree-technologies li + li { margin-top: 8px; }
+.tree-technologies a { align-items: flex-start; }
+.tree-technologies a > .tree-level { margin-top: 4px; }
+.tree-entry-copy { min-width: 0; flex: 1; overflow-wrap: anywhere; }
+.tree-entry-title { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 14px; font-weight: 550; }
+.tree-entry-role { padding: 1px 6px; border: 1px solid #b3c09f; border-radius: 3px; font-size: 10px; font-weight: 400; }
+.tree-entry-name, .tree-entry-description { display: block; margin-top: 5px; font-size: 12px; line-height: 1.8; }
+.tree-entry-description { color: #52614b; }
+.tree-empty-domain { padding: 15px; }
+.tree-node-heading { display: flex; align-items: center; gap: 11px; padding-left: 25px; }
+.tree-empty-domain .tree-description { margin: 10px 0 0 51px; }
+.tree-empty-note { margin: 8px 0 0 51px; color: var(--muted); font-size: 11px; }
+.tree-core { padding: 14px; border: 1px solid #b9c5ac; background: #e0ebc8; scroll-margin-top: 30px; }
+.tree-core-heading { display: flex; align-items: baseline; gap: 10px; }
+.tree-core-discriminator { margin-top: 8px; font-size: 12px; line-height: 1.9; color: #52614b; }
+.tree-core-members { margin: 12px 0 0 25px; }
+.tree-technologies .tree-member { flex-wrap: wrap; align-items: baseline; gap: 8px; padding: 9px 0 0; border: 0; border-top: 1px solid #b9c5ac; background: transparent; }
+.tree-member .tree-entry-name { flex: 1 1 150px; margin: 0; }
+.tree-index-links { display: grid; gap: 12px; margin-top: 22px; }
 
 .breadcrumb { display: flex; align-items: center; gap: 13px; padding-top: 26px; color: var(--muted); font-size: 10px; line-height: 1.8; }
 .breadcrumb a:hover { text-decoration: underline; text-underline-offset: 3px; }
@@ -385,6 +407,14 @@ main { min-height: 60vh; }
   .tree-level { font-size: 8px; }
   .tree-technologies { padding-left: 12px; padding-right: 8px; }
   .tree-technologies a { font-size: 10px; padding-inline: 10px; }
+  .tree-description { margin-left: 35px; margin-right: 10px; }
+  .tree-entry-title { font-size: 13px; }
+  .tree-empty-domain { padding-inline: 8px; }
+  .tree-node-heading { padding-left: 19px; gap: 7px; }
+  .tree-empty-domain .tree-description, .tree-empty-note { margin-left: 35px; }
+  .tree-core { padding: 11px; }
+  .tree-core-heading { gap: 7px; }
+  .tree-core-members { margin-left: 20px; }
   .detail-heading { padding-block: 29px; }
   .detail-heading h1 { font-size: 37px; }
   .detail-english { font-size: 11px; }

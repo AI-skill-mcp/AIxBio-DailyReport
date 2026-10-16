@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import Ajv from 'ajv';
 import addFormats from 'ajv-formats';
 import { renderReport } from './render-report.mjs';
+import { navigationIndex, renderNavigationIndex, validateNavigation } from './navigation.mjs';
 
 export { renderReport } from './render-report.mjs';
 
@@ -41,6 +42,7 @@ function jsonFiles(directory) {
 export function loadRepository(root = repositoryRoot) {
   return {
     taxonomy: readJson(join(root, 'knowledge/taxonomy.json')),
+    navigation: readJson(join(root, 'knowledge/technology-navigation.json')),
     organizations: readJson(join(root, 'knowledge/organizations.json')),
     relationships: readJson(join(root, 'knowledge/relationships.json')),
     technologies: jsonFiles(join(root, 'knowledge/technologies')).map((path) => ({ path: relative(root, path), data: readJson(path) })),
@@ -92,6 +94,7 @@ export function validateData(data, { today = shanghaiDate() } = {}) {
   const relationshipsValid = valid('relationships', data.relationships, 'relationships');
   const techEntries = data.technologies.filter((entry) => valid('technology', entry.data, entry.path));
   const reportEntries = data.reports.filter((entry) => valid('report', entry.data, entry.path));
+  errors.push(...validateNavigation(data.navigation, techEntries.map((entry) => entry.data.id)));
   if (!taxonomyValid || !organizationsValid || !relationshipsValid) return errors;
   const nodes = new Map(data.taxonomy.map((node) => [node.id, node]));
   const technologies = new Map(techEntries.map((entry) => [entry.data.id, entry.data]));
@@ -210,7 +213,7 @@ export function publicContent(data) {
   const reports = data.reports.map((entry) => entry.data).filter((report) => report.status === 'published').sort((a, b) => b.date.localeCompare(a.date));
   const articles = reports.flatMap((report) => report.articles.map((article) => ({ ...article, reportDate: report.date })));
   const opportunities = articles.flatMap((article) => article.opportunities.map((opportunity) => ({ ...opportunity, articleId: article.id, reportDate: article.reportDate })));
-  return { taxonomy: data.taxonomy, technologies, reports, articles, opportunities };
+  return { taxonomy: data.taxonomy, navigation: data.navigation, technologies, reports, articles, opportunities };
 }
 
 /** Build deterministic public indexes from source records, excluding draft contributions. */
@@ -219,6 +222,8 @@ export function generatedFiles(data) {
   const json = (value) => `${JSON.stringify(value, null, 2)}\n`;
   const files = new Map(data.reports.map(({ path, data: report }) => [path.replace(/\.json$/, '.md'), renderReport(report, data.taxonomy)]));
   files.set('indexes/public-content.json', json(content));
+  files.set('indexes/technology-navigation.json', json(navigationIndex(data.navigation)));
+  files.set('indexes/technology-navigation.md', renderNavigationIndex(data.navigation));
   files.set('indexes/timeline.json', json(content.reports.map((report) => ({ date: report.date, title: report.title, article_ids: report.articles.map((article) => article.id) }))));
   files.set('indexes/technology-index.json', json(content.technologies.map((technology) => {
     const related = content.articles.filter((article) => article.related_technology_ids.includes(technology.id));

@@ -71,8 +71,9 @@ export type PublishedArticle = Article & { reportDate: string };
 export type PublishedOpportunity = Opportunity & { articleId: string; reportDate: string };
 
 // Generated data is validated before every build; only its public projection is imported.
-const content = generated as unknown as { taxonomy: TaxonomyNode[]; technologies: Technology[]; reports: Report[] };
+const content = generated as unknown as { taxonomy: TaxonomyNode[]; technologies: Technology[]; reports: Report[]; navigation: typeof import('../../knowledge/technology-navigation.json') };
 export const taxonomy = content.taxonomy;
+export const navigation = content.navigation;
 export const technologies = content.technologies;
 export const reports = content.reports.filter((report) => report.status === 'published').sort((a, b) => b.date.localeCompare(a.date));
 export const articles: PublishedArticle[] = reports.flatMap((report) => report.articles.map((article) => ({ ...article, reportDate: report.date })));

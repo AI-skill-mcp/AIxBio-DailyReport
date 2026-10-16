@@ -169,6 +169,173 @@
       "level": 6
     }
   ],
+  "navigation": {
+    "version": "1.0",
+    "updated_at": "2026-10-16",
+    "domains": [
+      {
+        "id": "biological-data",
+        "name": "生物数据科学",
+        "english_name": "Biological Data Science",
+        "description": "解析已有测量数据：识别细胞状态，连接不同数据中的信息。",
+        "routes": [
+          {
+            "id": "cell-representation-analysis",
+            "name": "细胞表征与解析",
+            "english_name": "Cell Representation & Analysis",
+            "description": "从观测数据学习表示，支持细胞注释与整合；不等同于预测干预后的反应。",
+            "entries": [
+              {
+                "id": "single-cell-representation",
+                "name": "单细胞表示学习",
+                "description": "学习基因与细胞表示，支持多种单细胞分析任务。",
+                "research_object": "已有单细胞分子测量与细胞状态",
+                "primary_output": "可用于注释、整合与下游分析的基因或细胞表示",
+                "discriminator": "主要交付观测数据的表示与解析结果，而非指定干预后的响应预测。",
+                "boundary": "若主要交付是加药或基因干预后的细胞读数，应先评估细胞与系统建模分支；模型附带的多任务能力不构成重复挂树理由。",
+                "members": [
+                  {
+                    "technology_id": "scgpt",
+                    "role": "基础模型"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "molecular-design",
+        "name": "分子设计与优化",
+        "english_name": "Molecular Design & Optimization",
+        "description": "面向靶点与分子候选：决定研究谁、评价候选，再提出新设计。",
+        "routes": [
+          {
+            "id": "target-evidence-prioritization",
+            "name": "靶点证据整合与排序",
+            "english_name": "Target Evidence & Prioritization",
+            "description": "整合疾病与遗传证据，确定优先验证的干预对象。",
+            "entries": [
+              {
+                "id": "multimodal-target-discovery",
+                "name": "多模态靶点发现",
+                "description": "整合人群遗传、多组学与实验数据，支持靶点选择。",
+                "research_object": "疾病相关基因、蛋白及其遗传和实验依据",
+                "primary_output": "待验证的疾病干预靶点与优先级",
+                "discriminator": "主要交付干预对象或靶点假设，区别于生成分子候选或模拟完整细胞反应。",
+                "boundary": "不因平台名含Virtual Human就归入细胞模拟；通用证据检索只有进一步给出靶点选择结果时才归入本类。",
+                "members": [
+                  {
+                    "technology_id": "insitro-virtual-human",
+                    "role": "发现平台"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "structure-prediction-evaluation",
+            "name": "结构预测与评测",
+            "english_name": "Structure Prediction & Evaluation",
+            "description": "研究给定分子的结构与结合方式；将预测方法和独立评测分别呈现。",
+            "entries": [
+              {
+                "id": "complex-structure-prediction-methods",
+                "name": "复合物结构预测",
+                "description": "预测蛋白质与其他生物分子构成的复合物结构。",
+                "research_object": "给定蛋白质、核酸、配体等组成的分子复合物",
+                "primary_output": "复合物三维结构预测及其置信信息",
+                "discriminator": "交付结构预测本身；评测类交付对预测质量的独立评价，生成设计类提出新候选。",
+                "boundary": "仅发布盲测规则、实验参照或评价结果的项目归入盲测类，不因测评对象是结构就标成预测模型。",
+                "members": [
+                  {
+                    "technology_id": "alphafold-3",
+                    "role": "预测模型"
+                  }
+                ]
+              },
+              {
+                "id": "protein-ligand-blind-benchmarking",
+                "name": "蛋白质–配体盲测",
+                "description": "用隐藏实验结果评价结构预测，区分评测方法与被测模型。",
+                "research_object": "模型提交的蛋白质–配体预测与隐藏的实验参照",
+                "primary_output": "可比较的盲测协议、指标与评价结果",
+                "discriminator": "通过对参测者隐藏实验参照来检验泛化能力；本类评价模型，不产出预测模型。",
+                "boundary": "普通回顾性测试、分子对接工具或结构预测模型不能仅凭有评分指标归入盲测；评测对象或参照公开方式明显不同，应先更新索引。",
+                "members": [
+                  {
+                    "technology_id": "openbind-blind-evaluation",
+                    "role": "盲测方法"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "generative-molecular-design",
+            "name": "生成式分子设计",
+            "english_name": "Generative Molecular Design",
+            "description": "围绕设计约束提出新候选，交付可进一步验证的结构方案。",
+            "entries": [
+              {
+                "id": "protein-backbone-generation",
+                "name": "蛋白骨架生成",
+                "description": "用生成模型提出蛋白质骨架，生成后仍需序列设计与实验验证。",
+                "research_object": "满足功能或几何约束的新蛋白质骨架",
+                "primary_output": "新生成的蛋白质骨架候选",
+                "discriminator": "设计对象是新的蛋白骨架，区别于预测给定序列的结构、生成小分子或优化已有序列。",
+                "boundary": "小分子生成、抗体序列优化或酶性能优化不应仅因同用扩散模型而塞入本类；先补充分辨对象与产出的核心技术索引。",
+                "members": [
+                  {
+                    "technology_id": "rfdiffusion",
+                    "role": "生成模型"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cell-systems",
+        "name": "细胞与系统建模",
+        "english_name": "Cell & Systems Modeling",
+        "description": "预测干预后的细胞响应或随时间变化的动态过程。",
+        "routes": []
+      },
+      {
+        "id": "research-automation",
+        "name": "科研流程与自动化",
+        "english_name": "Research Workflows & Automation",
+        "description": "组织研究任务与工具执行，交付可追溯的计算流程和研究材料。",
+        "routes": [
+          {
+            "id": "scientific-agent-workflows",
+            "name": "科研智能体工作流",
+            "english_name": "Scientific Agent Workflows",
+            "description": "连接证据检索、软件与计算工具；只有连接真实实验反馈后才属于实验闭环。",
+            "entries": [
+              {
+                "id": "scientific-workflow-orchestration-tools",
+                "name": "科研工作流编排",
+                "description": "组织检索、计算与研究材料产出，保留工具调用和证据链。",
+                "research_object": "科研数字任务、证据与软件工具的执行步骤",
+                "primary_output": "可追溯的计算研究流程与研究材料",
+                "discriminator": "主要组织数字研究任务的执行，区别于直接预测生物对象，也未必连接真实湿实验。",
+                "boundary": "只有论文问答的工具、主动选择下一轮实验的系统或机器人湿实验执行，应先按其主要交付结果评估独立路线，不因都称Agent而合并。",
+                "members": [
+                  {
+                    "technology_id": "antigravity-science-workflows",
+                    "role": "协作流程"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
   "technologies": [
     {
       "id": "alphafold-3",
