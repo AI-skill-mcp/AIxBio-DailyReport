@@ -1,14 +1,15 @@
 ---
-import { technologies, taxonomy } from '../lib/content';
+import { technologies } from '../lib/content';
+import { technologyNavigation } from '../lib/technology-tree';
 interface Props {
   technology: (typeof technologies)[number];
   index?: number;
 }
 const { technology, index = 0 } = Astro.props;
-const category = taxonomy.find((node) => node.id === technology.technology_path[2]);
+const category = technologyNavigation(technology.id)[1];
 ---
 <a href={`/technology/${technology.id}/`} class="technology-card">
-  <div class="card-meta"><span>{category?.name ?? '基础技术'}</span><span class="mono">{String(index + 1).padStart(2, '0')}</span></div>
+  <div class="card-meta"><span>{category.name}</span><span class="mono">{String(index + 1).padStart(2, '0')}</span></div>
   <h3>{technology.name}</h3>
   <p class="card-english">{technology.english_name}</p>
   <p class="card-summary">{technology.summary}</p>

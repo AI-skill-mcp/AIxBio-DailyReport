@@ -1,29 +1,73 @@
 ---
-import { taxonomy, technologies } from '../lib/content';
-interface Props { parentId: string | null; }
-const { parentId } = Astro.props;
-const nodes = taxonomy.filter((node) => node.parent_id === parentId);
+import { technologyTree } from '../lib/technology-tree';
 ---
-<ul class="tree-list" class:list={{ 'tree-root': parentId === null }}>
-  {nodes.map((node) => {
-    const descendants = technologies.filter((technology) => technology.technology_path.includes(node.id));
-    const directTechnologies = descendants.filter((technology) => technology.technology_path.at(-1) === node.id);
+<!-- Core classes form the third level; their member links open technology details directly. -->
+<ul class="tree-list tree-root">
+  {technologyTree.map((domain) => {
+    const entryCount = domain.routes.reduce((total, route) => total + route.entries.reduce((count, entry) => count + entry.members.length, 0), 0);
     return (
       <li>
-        <details open={node.level <= 3} class="tree-branch">
-          <summary>
-            <span class="tree-toggle" aria-hidden="true">＋</span>
-            <span class="tree-level mono">L{node.level}</span>
-            <span class="tree-label">{node.name}<small>{node.english_name}</small></span>
-            <span class="tree-count mono" title="关联技术条目">{String(descendants.length).padStart(2, '0')}</span>
-          </summary>
-          <Astro.self parentId={node.id} />
-          {directTechnologies.length > 0 && (
-            <ul class="tree-technologies">
-              {directTechnologies.map((technology) => <li><a href={`/technology/${technology.id}/`}><span>{technology.name}</span><span aria-hidden="true">↗</span></a></li>)}
+        {domain.routes.length ? (
+          <details open class="tree-branch">
+            <summary>
+              <span class="tree-toggle" aria-hidden="true">＋</span>
+              <span class="tree-level mono">L1</span>
+              <span class="tree-label">{domain.name}<small>{domain.english_name}</small></span>
+              <span class="tree-count mono" title="关联技术条目">{String(entryCount).padStart(2, '0')}</span>
+            </summary>
+            <p class="tree-description">{domain.description}</p>
+            <ul class="tree-list">
+              {domain.routes.map((route) => (
+                <li>
+                  <details open class="tree-branch">
+                    <summary>
+                      <span class="tree-toggle" aria-hidden="true">＋</span>
+                      <span class="tree-level mono">L2</span>
+                      <span class="tree-label">{route.name}<small>{route.english_name}</small></span>
+                      <span class="tree-count mono" title="关联技术条目">{String(route.entries.reduce((total, entry) => total + entry.members.length, 0)).padStart(2, '0')}</span>
+                    </summary>
+                    <p class="tree-description">{route.description}</p>
+                    <ul class="tree-technologies">
+                      {route.entries.map((entry) => (
+                        <li class="tree-core" id={'core-' + entry.id}>
+                          <div class="tree-core-heading">
+                            <span class="tree-level mono">L3</span>
+                            <div class="tree-entry-copy">
+                              <span class="tree-entry-title">{entry.name}</span>
+                              <p class="tree-entry-description">{entry.description}</p>
+                              <p class="tree-core-discriminator"><strong>区分特点：</strong>{entry.discriminator}</p>
+                            </div>
+                          </div>
+                          {entry.members.length ? (
+                            <div class="tree-core-members" aria-label={entry.name + '已收录技术'}>
+                              {entry.members.map((member) => (
+                                <a class="tree-member" href={'/technology/' + member.technology_id + '/'}>
+                                  <span class="tree-entry-name">{member.technology.name}</span>
+                                  <span class="tree-entry-role">{member.role}</span>
+                                  <span aria-hidden="true">↗</span>
+                                </a>
+                              ))}
+                            </div>
+                          ) : <p class="tree-empty-note">尚未收录技术条目。</p>}
+                        </li>
+                      ))}
+                    </ul>
+                  </details>
+                </li>
+              ))}
             </ul>
-          )}
-        </details>
+          </details>
+        ) : (
+          <div class="tree-empty-domain">
+            <div class="tree-node-heading">
+              <span class="tree-level mono">L1</span>
+              <span class="tree-label">{domain.name}<small>{domain.english_name}</small></span>
+              <span class="tree-count mono" title="关联技术条目">00</span>
+            </div>
+            <p class="tree-description">{domain.description}</p>
+            <p class="tree-empty-note">尚未收录技术条目。</p>
+          </div>
+        )}
       </li>
     );
   })}

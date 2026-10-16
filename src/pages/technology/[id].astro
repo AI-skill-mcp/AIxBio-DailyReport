@@ -1,7 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SourceList from '../../components/SourceList.astro';
-import { technologies, taxonomy, articles } from '../../lib/content';
+import { technologies, articles } from '../../lib/content';
+import { technologyNavigation } from '../../lib/technology-tree';
 
 /** Generate one static page per verified foundational technology. */
 export function getStaticPaths() {
@@ -10,7 +11,7 @@ export function getStaticPaths() {
 type Technology = (typeof technologies)[number];
 interface Props { technology: Technology; }
 const { technology } = Astro.props;
-const path = technology.technology_path.map((id) => taxonomy.find((node) => node.id === id)).filter((node) => node !== undefined);
+const path = technologyNavigation(technology.id);
 const related = technologies.filter((entry) => technology.related_ids.includes(entry.id));
 const relatedArticles = articles.filter((article) => article.related_technology_ids.includes(technology.id));
 ---

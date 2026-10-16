@@ -164,10 +164,10 @@ test('generation is idempotent; check mode catches edited/stale Markdown and orp
     const jsonPath = join(root, path);
     mkdirSync(dirname(jsonPath), { recursive: true });
     writeFileSync(jsonPath, JSON.stringify(report));
-    assert.equal(generate({ root }), 5);
+    assert.equal(generate({ root }), 7);
     const first = [...generatedFiles(loadRepository(root))].map(([path]) => [path, readFileSync(join(root, path), 'utf8')]);
-    assert.equal(generate({ root, check: true }), 5);
-    assert.equal(generate({ root }), 5);
+    assert.equal(generate({ root, check: true }), 7);
+    assert.equal(generate({ root }), 7);
     for (const [path, text] of first) assert.equal(readFileSync(join(root, path), 'utf8'), text);
     writeFileSync(jsonPath.replace(/\.json$/, '.md'), 'edited independently');
     assert.throws(() => generate({ root, check: true }), /Generated files are stale/);
