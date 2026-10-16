@@ -1,0 +1,30 @@
+---
+import { taxonomy, technologies } from '../lib/content';
+interface Props { parentId: string | null; }
+const { parentId } = Astro.props;
+const nodes = taxonomy.filter((node) => node.parent_id === parentId);
+---
+<ul class="tree-list" class:list={{ 'tree-root': parentId === null }}>
+  {nodes.map((node) => {
+    const descendants = technologies.filter((technology) => technology.technology_path.includes(node.id));
+    const directTechnologies = descendants.filter((technology) => technology.technology_path.at(-1) === node.id);
+    return (
+      <li>
+        <details open={node.level <= 3} class="tree-branch">
+          <summary>
+            <span class="tree-toggle" aria-hidden="true">＋</span>
+            <span class="tree-level mono">L{node.level}</span>
+            <span class="tree-label">{node.name}<small>{node.english_name}</small></span>
+            <span class="tree-count mono" title="关联技术条目">{String(descendants.length).padStart(2, '0')}</span>
+          </summary>
+          <Astro.self parentId={node.id} />
+          {directTechnologies.length > 0 && (
+            <ul class="tree-technologies">
+              {directTechnologies.map((technology) => <li><a href={`/technology/${technology.id}/`}><span>{technology.name}</span><span aria-hidden="true">↗</span></a></li>)}
+            </ul>
+          )}
+        </details>
+      </li>
+    );
+  })}
+</ul>

@@ -1,0 +1,16 @@
+---
+import { technologies, taxonomy } from '../lib/content';
+interface Props {
+  technology: (typeof technologies)[number];
+  index?: number;
+}
+const { technology, index = 0 } = Astro.props;
+const category = taxonomy.find((node) => node.id === technology.technology_path[2]);
+---
+<a href={`/technology/${technology.id}/`} class="technology-card">
+  <div class="card-meta"><span>{category?.name ?? '基础技术'}</span><span class="mono">{String(index + 1).padStart(2, '0')}</span></div>
+  <h3>{technology.name}</h3>
+  <p class="card-english">{technology.english_name}</p>
+  <p class="card-summary">{technology.summary}</p>
+  <div class="card-bottom"><span>{technology.sources.length} 个核验来源</span><span class="card-arrow" aria-hidden="true">↗</span></div>
+</a>

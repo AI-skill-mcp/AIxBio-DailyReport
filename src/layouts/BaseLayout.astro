@@ -1,0 +1,84 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  pageType?: string;
+  noIndex?: boolean;
+}
+
+const {
+  title = 'AI × Bio · 技术情报站',
+  description = '从可信来源出发，连接人工智能与生命科学。每日简报、六层技术树与科研机会，开放归档，持续生长。',
+  pageType = '页面',
+  noIndex = false,
+} = Astro.props;
+const path = Astro.url.pathname;
+const navigation = [
+  { href: '/daily/', label: '每日简报', number: '01' },
+  { href: '/technology/', label: '技术树', number: '02' },
+  { href: '/opportunities/', label: '机会雷达', number: '03' },
+  { href: '/search/', label: '搜索', number: '04' },
+];
+const canonical = new URL(path, Astro.site ?? 'https://bioinformatic.tech');
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    {noIndex && <meta name="robots" content="noindex, follow" />}
+    <meta name="theme-color" content="#f4f3eb" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">跳至主要内容</a>
+    <header class="site-header" data-pagefind-ignore>
+      <a class="brand" href="/" aria-label="AI × Bio 首页">
+        <span class="brand-symbol" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="brand-name">AI <span>×</span> Bio<span class="brand-caption">技术情报站</span></span>
+      </a>
+      <nav class="desktop-nav" aria-label="主要导航">
+        {navigation.map((item) => (
+          <a href={item.href} aria-current={path.startsWith(item.href) ? 'page' : undefined}>
+            <span class="nav-number">{item.number}</span>{item.label}
+            {item.href === '/search/' && <span aria-hidden="true" class="search-symbol">⌕</span>}
+          </a>
+        ))}
+      </nav>
+      <details class="mobile-nav">
+        <summary>导航 <span aria-hidden="true">＋</span></summary>
+        <nav aria-label="移动端导航">
+          <a href="/">首页</a>
+          {navigation.map((item) => <a href={item.href} aria-current={path.startsWith(item.href) ? 'page' : undefined}>{item.label}</a>)}
+        </nav>
+      </details>
+    </header>
+
+    <main id="main-content" data-pagefind-body={noIndex ? undefined : true} data-pagefind-ignore={noIndex ? 'all' : undefined}>
+      {!noIndex && <span hidden data-pagefind-filter={`类型:${pageType}`}></span>}
+      <slot />
+    </main>
+
+    <footer class="site-footer" data-pagefind-ignore>
+      <div>
+        <a href="/" class="footer-wordmark">AI × Bio<span class="small-dot"></span></a>
+        <p>在算法与生命之间，寻找下一条线索。</p>
+      </div>
+      <div class="footer-meta">
+        <a href="https://github.com/AI-skill-mcp/AIxBio-DailyReport" target="_blank" rel="noopener noreferrer">开放档案 ↗</a>
+        <span>来源可追溯 · 知识可连接</span>
+        <span class="mono">BIOINFORMATIC.TECH</span>
+      </div>
+    </footer>
+  </body>
+</html>

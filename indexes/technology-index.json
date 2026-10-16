@@ -1,0 +1,44 @@
+[
+  {
+    "id": "alphafold-3",
+    "name": "AlphaFold 3 复合物结构预测",
+    "technology_path": [
+      "ai-science",
+      "ai-biology",
+      "biomolecular-modeling",
+      "structure-prediction",
+      "complex-structure-prediction",
+      "diffusion-complex-modeling"
+    ],
+    "article_ids": [],
+    "latest_report_date": null
+  },
+  {
+    "id": "rfdiffusion",
+    "name": "RFdiffusion 蛋白质设计",
+    "technology_path": [
+      "ai-science",
+      "ai-biology",
+      "biomolecular-modeling",
+      "protein-design",
+      "generative-protein-design",
+      "backbone-diffusion"
+    ],
+    "article_ids": [],
+    "latest_report_date": null
+  },
+  {
+    "id": "scgpt",
+    "name": "scGPT 单细胞基础模型",
+    "technology_path": [
+      "ai-science",
+      "ai-biology",
+      "single-cell-omics",
+      "cell-representation",
+      "single-cell-foundation-models",
+      "generative-cell-transformers"
+    ],
+    "article_ids": [],
+    "latest_report_date": null
+  }
+]

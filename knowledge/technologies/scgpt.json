@@ -1,0 +1,22 @@
+{
+  "id": "scgpt",
+  "name": "scGPT 单细胞基础模型",
+  "english_name": "scGPT",
+  "summary": "通过大规模单细胞数据预训练，学习可用于多种单细胞分析任务的表示。",
+  "description": "2024 年基础研究。论文以生成式 Transformer 在超过 3300 万个细胞数据上预训练，展示细胞注释、数据整合、扰动响应预测等任务。",
+  "method": "对基因及表达信息进行表示学习，以生成式预训练获得可迁移到下游单细胞组学任务的模型。",
+  "limitations": "编辑分析：论文中的任务评估不能保证新组织、测序平台或干预条件下的表现。部署时应在目标数据上对照任务专用基线，并评估批次效应与泛化。",
+  "technology_path": ["ai-science", "ai-biology", "single-cell-omics", "cell-representation", "single-cell-foundation-models", "generative-cell-transformers"],
+  "sources": [{
+    "title": "scGPT: toward building a foundation model for single-cell multi-omics using generative AI",
+    "url": "https://www.nature.com/articles/s41592-024-02201-0",
+    "publisher": "Nature Methods",
+    "type": "paper",
+    "published_at": "2024-02-26",
+    "checked_at": "2026-10-16",
+    "verification_status": "verified",
+    "verification_note": "核对 Nature Methods 原始论文的在线发表日期与摘要，并交叉核对 PubMed 38409223；局限中的应用建议标为编辑分析。",
+    "organization_ids": []
+  }],
+  "related_ids": []
+}
