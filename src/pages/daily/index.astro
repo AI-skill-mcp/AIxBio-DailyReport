@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeading from '../../components/PageHeading.astro';
+import EmptyState from '../../components/EmptyState.astro';
+import { reports } from '../../lib/content';
+---
+<BaseLayout title="每日简报 · AI × Bio" pageType="每日简报索引">
+  <div class="wrap">
+    <PageHeading number="01" english="DAILY SIGNALS" title="每日简报" description="人工智能与生命科学的每日线索。保留来源、核验记录与技术上下文，把进展读进知识体系。" />
+    <div class="listing-meta"><span class="mono">{String(reports.length).padStart(2, '0')} REPORTS</span><span>仅展示已核验并正式发布的简报</span></div>
+    {reports.length ? <div class="report-list">{reports.map((report) => <article class="report-row"><time datetime={report.date} class="mono">{report.date}</time><div><h2><a href={`/daily/${report.date}/`}>{report.title}</a></h2><p>{report.summary}</p><span class="muted small">{report.articles.length} 条进展 · 来源已核验</span></div><a href={`/daily/${report.date}/`} aria-label={`阅读 ${report.date} 简报`} class="row-arrow">↗</a></article>)}</div> : <EmptyState eyebrow="THE ARCHIVE STARTS WITH EVIDENCE" title="档案已就绪，第一期简报尚未发布。" description="未经核验的历史资讯不会出现在这里。正式简报将同时提供网页阅读、Markdown 和 JSON 档案。" href="/technology/" linkLabel="先看基础技术知识" />}
+    <aside class="editorial-note"><span class="eyebrow">ABOUT THIS ARCHIVE</span><p>每期保留独立的简报日期、事件日期、来源发布日期与核验日期。来源核验表示确认原文支持相应描述，不代表已独立复现研究结果。</p></aside>
+  </div>
+</BaseLayout>

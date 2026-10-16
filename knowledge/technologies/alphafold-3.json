@@ -1,0 +1,22 @@
+{
+  "id": "alphafold-3",
+  "name": "AlphaFold 3 复合物结构预测",
+  "english_name": "AlphaFold 3",
+  "summary": "在统一模型中预测蛋白质、核酸、小分子等构成的生物分子复合物结构。",
+  "description": "2024 年基础研究。论文展示了跨分子类型的联合结构预测，并评估了蛋白质与配体、核酸及抗体与抗原等相互作用；此条目用于理解技术路线。",
+  "method": "以扩散模型生成原子坐标，将多种生物分子表示与相互作用建模纳入同一预测框架。",
+  "limitations": "论文讨论了无序区域、立体化学、动态行为及部分靶标的局限。编辑分析：预测的结构需要进一步实验评估，不能直接当作结合亲和力或功能证据。",
+  "technology_path": ["ai-science", "ai-biology", "biomolecular-modeling", "structure-prediction", "complex-structure-prediction", "diffusion-complex-modeling"],
+  "sources": [{
+    "title": "Accurate structure prediction of biomolecular interactions with AlphaFold 3",
+    "url": "https://www.nature.com/articles/s41586-024-07487-w",
+    "publisher": "Nature",
+    "type": "paper",
+    "published_at": "2024-05-08",
+    "checked_at": "2026-10-16",
+    "verification_status": "verified",
+    "verification_note": "核对 Nature 原始论文的发布日期、摘要、讨论与作者机构。内容为基础技术概述，不是 2026 年新闻。",
+    "organization_ids": ["google-deepmind", "isomorphic-labs"]
+  }],
+  "related_ids": []
+}

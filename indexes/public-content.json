@@ -1,0 +1,198 @@
+{
+  "taxonomy": [
+    {
+      "id": "ai-science",
+      "name": "人工智能赋能科学",
+      "english_name": "AI for Science",
+      "parent_id": null,
+      "level": 1
+    },
+    {
+      "id": "ai-biology",
+      "name": "人工智能与生命科学",
+      "english_name": "AI for Biology",
+      "parent_id": "ai-science",
+      "level": 2
+    },
+    {
+      "id": "biomolecular-modeling",
+      "name": "生物分子建模",
+      "english_name": "Biomolecular Modeling",
+      "parent_id": "ai-biology",
+      "level": 3
+    },
+    {
+      "id": "structure-prediction",
+      "name": "结构预测",
+      "english_name": "Structure Prediction",
+      "parent_id": "biomolecular-modeling",
+      "level": 4
+    },
+    {
+      "id": "complex-structure-prediction",
+      "name": "复合物结构预测",
+      "english_name": "Complex Structure Prediction",
+      "parent_id": "structure-prediction",
+      "level": 5
+    },
+    {
+      "id": "diffusion-complex-modeling",
+      "name": "扩散式复合物建模",
+      "english_name": "Diffusion Complex Modeling",
+      "parent_id": "complex-structure-prediction",
+      "level": 6
+    },
+    {
+      "id": "protein-design",
+      "name": "蛋白质设计",
+      "english_name": "Protein Design",
+      "parent_id": "biomolecular-modeling",
+      "level": 4
+    },
+    {
+      "id": "generative-protein-design",
+      "name": "生成式蛋白设计",
+      "english_name": "Generative Protein Design",
+      "parent_id": "protein-design",
+      "level": 5
+    },
+    {
+      "id": "backbone-diffusion",
+      "name": "蛋白骨架扩散生成",
+      "english_name": "Backbone Diffusion",
+      "parent_id": "generative-protein-design",
+      "level": 6
+    },
+    {
+      "id": "single-cell-omics",
+      "name": "单细胞组学",
+      "english_name": "Single-cell Omics",
+      "parent_id": "ai-biology",
+      "level": 3
+    },
+    {
+      "id": "cell-representation",
+      "name": "细胞表示学习",
+      "english_name": "Cell Representation Learning",
+      "parent_id": "single-cell-omics",
+      "level": 4
+    },
+    {
+      "id": "single-cell-foundation-models",
+      "name": "单细胞基础模型",
+      "english_name": "Single-cell Foundation Models",
+      "parent_id": "cell-representation",
+      "level": 5
+    },
+    {
+      "id": "generative-cell-transformers",
+      "name": "生成式细胞 Transformer",
+      "english_name": "Generative Cell Transformers",
+      "parent_id": "single-cell-foundation-models",
+      "level": 6
+    }
+  ],
+  "technologies": [
+    {
+      "id": "alphafold-3",
+      "name": "AlphaFold 3 复合物结构预测",
+      "english_name": "AlphaFold 3",
+      "summary": "在统一模型中预测蛋白质、核酸、小分子等构成的生物分子复合物结构。",
+      "description": "2024 年基础研究。论文展示了跨分子类型的联合结构预测，并评估了蛋白质与配体、核酸及抗体与抗原等相互作用；此条目用于理解技术路线。",
+      "method": "以扩散模型生成原子坐标，将多种生物分子表示与相互作用建模纳入同一预测框架。",
+      "limitations": "论文讨论了无序区域、立体化学、动态行为及部分靶标的局限。编辑分析：预测的结构需要进一步实验评估，不能直接当作结合亲和力或功能证据。",
+      "technology_path": [
+        "ai-science",
+        "ai-biology",
+        "biomolecular-modeling",
+        "structure-prediction",
+        "complex-structure-prediction",
+        "diffusion-complex-modeling"
+      ],
+      "sources": [
+        {
+          "title": "Accurate structure prediction of biomolecular interactions with AlphaFold 3",
+          "url": "https://www.nature.com/articles/s41586-024-07487-w",
+          "publisher": "Nature",
+          "type": "paper",
+          "published_at": "2024-05-08",
+          "checked_at": "2026-10-16",
+          "verification_status": "verified",
+          "verification_note": "核对 Nature 原始论文的发布日期、摘要、讨论与作者机构。内容为基础技术概述，不是 2026 年新闻。",
+          "organization_ids": [
+            "google-deepmind",
+            "isomorphic-labs"
+          ]
+        }
+      ],
+      "related_ids": []
+    },
+    {
+      "id": "rfdiffusion",
+      "name": "RFdiffusion 蛋白质设计",
+      "english_name": "RFdiffusion",
+      "summary": "通过对蛋白质结构逐步去噪，从约束条件生成新的蛋白骨架。",
+      "description": "2023 年基础研究。论文覆盖无条件蛋白生成、结合蛋白、对称组装体与功能基序支架设计，并对部分设计进行了结构和功能实验。",
+      "method": "将 RoseTTAFold 结构预测网络微调为扩散去噪网络，按目标或基序等条件生成骨架，再配合 ProteinMPNN 等方法设计序列。",
+      "limitations": "生成骨架并不保证每条候选序列具有目标功能。论文将计算筛选与实验表征分开；面向新靶标的设计仍需筛选、表达与功能实验。",
+      "technology_path": [
+        "ai-science",
+        "ai-biology",
+        "biomolecular-modeling",
+        "protein-design",
+        "generative-protein-design",
+        "backbone-diffusion"
+      ],
+      "sources": [
+        {
+          "title": "De novo design of protein structure and function with RFdiffusion",
+          "url": "https://www.nature.com/articles/s41586-023-06415-8",
+          "publisher": "Nature",
+          "type": "paper",
+          "published_at": "2023-07-11",
+          "checked_at": "2026-10-16",
+          "verification_status": "verified",
+          "verification_note": "核对 Nature 原始论文的在线发表日期、摘要、方法与作者机构；7 月 11 日为在线发表日，不使用 8 月刊期冒充事件日。",
+          "organization_ids": [
+            "uw-protein-design"
+          ]
+        }
+      ],
+      "related_ids": []
+    },
+    {
+      "id": "scgpt",
+      "name": "scGPT 单细胞基础模型",
+      "english_name": "scGPT",
+      "summary": "通过大规模单细胞数据预训练，学习可用于多种单细胞分析任务的表示。",
+      "description": "2024 年基础研究。论文以生成式 Transformer 在超过 3300 万个细胞数据上预训练，展示细胞注释、数据整合、扰动响应预测等任务。",
+      "method": "对基因及表达信息进行表示学习，以生成式预训练获得可迁移到下游单细胞组学任务的模型。",
+      "limitations": "编辑分析：论文中的任务评估不能保证新组织、测序平台或干预条件下的表现。部署时应在目标数据上对照任务专用基线，并评估批次效应与泛化。",
+      "technology_path": [
+        "ai-science",
+        "ai-biology",
+        "single-cell-omics",
+        "cell-representation",
+        "single-cell-foundation-models",
+        "generative-cell-transformers"
+      ],
+      "sources": [
+        {
+          "title": "scGPT: toward building a foundation model for single-cell multi-omics using generative AI",
+          "url": "https://www.nature.com/articles/s41592-024-02201-0",
+          "publisher": "Nature Methods",
+          "type": "paper",
+          "published_at": "2024-02-26",
+          "checked_at": "2026-10-16",
+          "verification_status": "verified",
+          "verification_note": "核对 Nature Methods 原始论文的在线发表日期与摘要，并交叉核对 PubMed 38409223；局限中的应用建议标为编辑分析。",
+          "organization_ids": []
+        }
+      ],
+      "related_ids": []
+    }
+  ],
+  "reports": [],
+  "articles": [],
+  "opportunities": []
+}

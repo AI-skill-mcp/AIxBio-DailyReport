@@ -1,0 +1,22 @@
+{
+  "id": "rfdiffusion",
+  "name": "RFdiffusion 蛋白质设计",
+  "english_name": "RFdiffusion",
+  "summary": "通过对蛋白质结构逐步去噪，从约束条件生成新的蛋白骨架。",
+  "description": "2023 年基础研究。论文覆盖无条件蛋白生成、结合蛋白、对称组装体与功能基序支架设计，并对部分设计进行了结构和功能实验。",
+  "method": "将 RoseTTAFold 结构预测网络微调为扩散去噪网络，按目标或基序等条件生成骨架，再配合 ProteinMPNN 等方法设计序列。",
+  "limitations": "生成骨架并不保证每条候选序列具有目标功能。论文将计算筛选与实验表征分开；面向新靶标的设计仍需筛选、表达与功能实验。",
+  "technology_path": ["ai-science", "ai-biology", "biomolecular-modeling", "protein-design", "generative-protein-design", "backbone-diffusion"],
+  "sources": [{
+    "title": "De novo design of protein structure and function with RFdiffusion",
+    "url": "https://www.nature.com/articles/s41586-023-06415-8",
+    "publisher": "Nature",
+    "type": "paper",
+    "published_at": "2023-07-11",
+    "checked_at": "2026-10-16",
+    "verification_status": "verified",
+    "verification_note": "核对 Nature 原始论文的在线发表日期、摘要、方法与作者机构；7 月 11 日为在线发表日，不使用 8 月刊期冒充事件日。",
+    "organization_ids": ["uw-protein-design"]
+  }],
+  "related_ids": []
+}

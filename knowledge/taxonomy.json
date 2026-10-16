@@ -1,0 +1,15 @@
+[
+  { "id": "ai-science", "name": "人工智能赋能科学", "english_name": "AI for Science", "parent_id": null, "level": 1 },
+  { "id": "ai-biology", "name": "人工智能与生命科学", "english_name": "AI for Biology", "parent_id": "ai-science", "level": 2 },
+  { "id": "biomolecular-modeling", "name": "生物分子建模", "english_name": "Biomolecular Modeling", "parent_id": "ai-biology", "level": 3 },
+  { "id": "structure-prediction", "name": "结构预测", "english_name": "Structure Prediction", "parent_id": "biomolecular-modeling", "level": 4 },
+  { "id": "complex-structure-prediction", "name": "复合物结构预测", "english_name": "Complex Structure Prediction", "parent_id": "structure-prediction", "level": 5 },
+  { "id": "diffusion-complex-modeling", "name": "扩散式复合物建模", "english_name": "Diffusion Complex Modeling", "parent_id": "complex-structure-prediction", "level": 6 },
+  { "id": "protein-design", "name": "蛋白质设计", "english_name": "Protein Design", "parent_id": "biomolecular-modeling", "level": 4 },
+  { "id": "generative-protein-design", "name": "生成式蛋白设计", "english_name": "Generative Protein Design", "parent_id": "protein-design", "level": 5 },
+  { "id": "backbone-diffusion", "name": "蛋白骨架扩散生成", "english_name": "Backbone Diffusion", "parent_id": "generative-protein-design", "level": 6 },
+  { "id": "single-cell-omics", "name": "单细胞组学", "english_name": "Single-cell Omics", "parent_id": "ai-biology", "level": 3 },
+  { "id": "cell-representation", "name": "细胞表示学习", "english_name": "Cell Representation Learning", "parent_id": "single-cell-omics", "level": 4 },
+  { "id": "single-cell-foundation-models", "name": "单细胞基础模型", "english_name": "Single-cell Foundation Models", "parent_id": "cell-representation", "level": 5 },
+  { "id": "generative-cell-transformers", "name": "生成式细胞 Transformer", "english_name": "Generative Cell Transformers", "parent_id": "single-cell-foundation-models", "level": 6 }
+]

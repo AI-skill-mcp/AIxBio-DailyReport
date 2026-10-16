@@ -1,0 +1,18 @@
+---
+import { technologies } from '../lib/content';
+interface Props { sources: (typeof technologies)[number]['sources']; }
+const { sources } = Astro.props;
+const typeNames = { paper: '研究论文', official: '官方来源', preprint: '预印本 · 未经同行评审' };
+---
+<ol class="source-list">
+  {sources.map((source, index) => (
+    <li>
+      <span class="source-number mono">{String(index + 1).padStart(2, '0')}</span>
+      <div>
+        <a href={source.url} target="_blank" rel="noopener noreferrer">{source.title} <span aria-hidden="true">↗</span></a>
+        <p class="source-meta">{typeNames[source.type]} · {source.publisher} · 来源日期 <time datetime={source.published_at}>{source.published_at}</time> · 核验日期 <time datetime={source.checked_at}>{source.checked_at}</time></p>
+        <p class="source-note">{source.verification_note}</p>
+      </div>
+    </li>
+  ))}
+</ol>

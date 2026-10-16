@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SourceList from '../../components/SourceList.astro';
+import { technologies, taxonomy, articles } from '../../lib/content';
+
+/** Generate one static page per verified foundational technology. */
+export function getStaticPaths() {
+  return technologies.map((technology) => ({ params: { id: technology.id }, props: { technology } }));
+}
+type Technology = (typeof technologies)[number];
+interface Props { technology: Technology; }
+const { technology } = Astro.props;
+const path = technology.technology_path.map((id) => taxonomy.find((node) => node.id === id)).filter((node) => node !== undefined);
+const related = technologies.filter((entry) => technology.related_ids.includes(entry.id));
+const relatedArticles = articles.filter((article) => article.related_technology_ids.includes(technology.id));
+---
+<BaseLayout title={`${technology.name} · 技术知识 · AI × Bio`} description={technology.summary} pageType="技术知识">
+  <div class="wrap">
+    <nav class="breadcrumb" aria-label="面包屑" data-pagefind-ignore><a href="/technology/">技术树</a><span aria-hidden="true">/</span><span>{technology.name}</span></nav>
+    <header class="detail-heading"><p class="eyebrow">FOUNDATIONAL KNOWLEDGE <span class="verified-badge">来源已核验</span></p><h1 data-pagefind-meta="title">{technology.name}<span class="heading-dot">.</span></h1><p class="detail-english">{technology.english_name}</p><p class="detail-summary" data-pagefind-meta="description">{technology.summary}</p></header>
+    <div class="detail-layout">
+      <aside class="detail-sidebar"><p class="eyebrow">IN THE KNOWLEDGE TREE</p><ol class="taxonomy-path">{path.map((node) => <li><span class="mono">L{node.level}</span><span>{node.name}</span></li>)}</ol><a class="text-link" href="/technology/">返回完整技术树 ↗</a><div class="sidebar-note"><span class="mono">{technology.sources.length} SOURCES</span><p>基础知识条目，不作为近期新闻。请结合原始研究的任务范围与限制阅读。</p></div></aside>
+      <article class="prose detail-content">
+        <section id="overview"><p class="eyebrow">01 / OVERVIEW</p><h2>它是什么</h2><p>{technology.description}</p></section>
+        <section id="method"><p class="eyebrow">02 / METHOD</p><h2>方法与原理</h2><p>{technology.method}</p></section>
+        <section class="limitation-box" id="limitations"><p class="eyebrow">03 / LIMITS</p><h2>理解它的边界</h2><p>{technology.limitations}</p></section>
+        <section id="sources"><p class="eyebrow">04 / EVIDENCE</p><h2>回到一手来源</h2><p class="small muted">以下记录保留来源日期与核验说明。来源核验不等于对研究结果的独立复现。</p><SourceList sources={technology.sources} /></section>
+        {related.length > 0 && <section><p class="eyebrow">05 / CONNECTIONS</p><h2>继续连接</h2><div class="related-links">{related.map((entry) => <a href={`/technology/${entry.id}/`}><span>{entry.name}<small>{entry.english_name}</small></span><span aria-hidden="true">↗</span></a>)}</div></section>}
+        <section><p class="eyebrow">RELATED SIGNALS</p><h2>相关简报</h2>{relatedArticles.length ? <ul class="related-articles">{relatedArticles.map((article) => <li><time class="mono" datetime={article.reportDate}>{article.reportDate}</time><a href={`/daily/${article.reportDate}/#${article.id}`}>{article.title} ↗</a></li>)}</ul> : <p class="muted">尚无关联的已发布简报。后续通过核验的进展会在这里汇集。</p>}</section>
+      </article>
+    </div>
+  </div>
+</BaseLayout>

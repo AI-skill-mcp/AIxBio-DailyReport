@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://bioinformatic.tech/schemas/daily-report.schema.json",
+  "title": "AI × Bio Daily Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "report_type", "date", "title", "summary", "status", "articles"],
+  "properties": {
+    "version": { "const": "1.0" },
+    "report_type": { "const": "AIxBio-Daily" },
+    "date": { "$ref": "#/definitions/date" },
+    "title": { "$ref": "#/definitions/text" },
+    "summary": { "$ref": "#/definitions/text" },
+    "status": { "enum": ["draft", "published"] },
+    "articles": { "type": "array", "items": { "$ref": "#/definitions/article" } }
+  },
+  "allOf": [{
+    "if": { "properties": { "status": { "const": "published" } }, "required": ["status"] },
+    "then": { "properties": { "articles": { "type": "array", "minItems": 1, "maxItems": 5 } } }
+  }],
+  "definitions": {
+    "text": { "type": "string", "minLength": 1, "pattern": "\\S" },
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "ids": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/definitions/id" } },
+    "date": { "type": "string", "format": "date", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "path": { "type": "array", "minItems": 6, "maxItems": 6, "uniqueItems": true, "items": { "$ref": "#/definitions/id" } },
+    "source": {
+      "type": "object", "additionalProperties": false,
+      "required": ["title", "url", "publisher", "type", "published_at", "checked_at", "verification_status", "verification_note", "organization_ids"],
+      "properties": {
+        "title": { "$ref": "#/definitions/text" },
+        "url": { "type": "string", "format": "uri", "pattern": "^https://" },
+        "publisher": { "$ref": "#/definitions/text" },
+        "type": { "enum": ["paper", "official", "preprint"] },
+        "published_at": { "$ref": "#/definitions/date" },
+        "checked_at": { "$ref": "#/definitions/date" },
+        "verification_status": { "enum": ["verified", "pending"] },
+        "verification_note": { "$ref": "#/definitions/text" },
+        "organization_ids": { "$ref": "#/definitions/ids" }
+      }
+    },
+    "opportunity": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "title", "kind", "description", "next_step", "technology_ids"],
+      "properties": {
+        "id": { "$ref": "#/definitions/id" },
+        "title": { "$ref": "#/definitions/text" },
+        "kind": { "enum": ["research", "product", "startup"] },
+        "description": { "$ref": "#/definitions/text" },
+        "next_step": { "$ref": "#/definitions/text" },
+        "technology_ids": { "type": "array", "allOf": [{ "$ref": "#/definitions/ids" }], "minItems": 1 }
+      }
+    },
+    "article": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "event_date", "title", "summary", "category", "technology_path", "related_technology_ids", "technical_details", "opportunities", "sources", "verification_status", "verification_note"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^\\d{8}-\\d{3}$" },
+        "event_date": { "$ref": "#/definitions/date" },
+        "title": { "$ref": "#/definitions/text" },
+        "summary": { "$ref": "#/definitions/text" },
+        "category": { "$ref": "#/definitions/text" },
+        "technology_path": { "$ref": "#/definitions/path" },
+        "related_technology_ids": { "type": "array", "allOf": [{ "$ref": "#/definitions/ids" }], "minItems": 1 },
+        "technical_details": {
+          "type": "object", "additionalProperties": false,
+          "required": ["problem", "method", "innovation", "limitations"],
+          "properties": {
+            "problem": { "$ref": "#/definitions/text" },
+            "method": { "$ref": "#/definitions/text" },
+            "innovation": { "$ref": "#/definitions/text" },
+            "limitations": { "$ref": "#/definitions/text" }
+          }
+        },
+        "opportunities": { "type": "array", "items": { "$ref": "#/definitions/opportunity" } },
+        "sources": { "type": "array", "items": { "$ref": "#/definitions/source" } },
+        "verification_status": { "enum": ["verified", "pending"] },
+        "verification_note": { "$ref": "#/definitions/text" }
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SourceList from '../../components/SourceList.astro';
+import { reports, technologies } from '../../lib/content';
+
+/** Generate a dated archive page only for reports cleared for publication. */
+export function getStaticPaths() {
+  return reports.map((report) => ({ params: { date: report.date }, props: { report } }));
+}
+interface Props { report: (typeof reports)[number]; }
+const { report } = Astro.props;
+const archivePath = `/archives/reports/${report.date.slice(0, 4)}/${report.date.slice(5, 7)}/${report.date}`;
+---
+<BaseLayout title={`${report.title} · AI × Bio`} description={report.summary} pageType="每日简报">
+  <div class="wrap report-detail">
+    <nav class="breadcrumb" aria-label="面包屑" data-pagefind-ignore><a href="/daily/">每日简报</a><span aria-hidden="true">/</span><time datetime={report.date}>{report.date}</time></nav>
+    <header class="detail-heading"><p class="eyebrow">DAILY SIGNALS <span class="verified-badge">来源已核验</span></p><h1 data-pagefind-meta="title">{report.title}</h1><p class="detail-summary" data-pagefind-meta="description">{report.summary}</p><div class="report-meta"><time class="mono" datetime={report.date}>简报日期 {report.date}</time><span>{report.articles.length} 条进展</span><a href={`${archivePath}.md`} download>Markdown ↓</a><a href={`${archivePath}.json`} download>JSON ↓</a></div></header>
+    <div class="detail-layout">
+      <aside class="detail-sidebar report-toc"><p class="eyebrow">IN THIS REPORT</p><ol>{report.articles.map((article, index) => <li><a href={`#${article.id}`}><span class="mono">{String(index + 1).padStart(2, '0')}</span>{article.title}</a></li>)}</ol><p class="small muted sidebar-note">事件日期、来源日期与简报日期分别记录，避免把历史进展误当作今日新闻。</p></aside>
+      <div class="report-articles">{report.articles.map((article, index) => <article class="news-article prose" id={article.id}><p class="eyebrow">{String(index + 1).padStart(2, '0')} / <span data-pagefind-filter="技术领域">{article.category}</span></p><h2>{article.title}</h2><p class="article-date mono">事件日期 <time datetime={article.event_date}>{article.event_date}</time></p><p class="news-summary">{article.summary}</p><dl class="technical-details"><div><dt>问题</dt><dd>{article.technical_details.problem}</dd></div><div><dt>方法</dt><dd>{article.technical_details.method}</dd></div><div><dt>创新</dt><dd>{article.technical_details.innovation}</dd></div><div><dt>限制</dt><dd>{article.technical_details.limitations}</dd></div></dl><div class="tag-list">{article.related_technology_ids.map((id) => <a href={`/technology/${id}/`}>{technologies.find((technology) => technology.id === id)?.name ?? id} ↗</a>)}</div>{article.opportunities.length > 0 && <section class="article-opportunities"><h3>值得追问的下一步</h3>{article.opportunities.map((opportunity) => <div><h4><a href={`/opportunities/#${opportunity.id}`}>{opportunity.title} ↗</a></h4><p>{opportunity.description}</p><p><strong>下一步：</strong>{opportunity.next_step}</p></div>)}</section>}<h3>来源与核验</h3><p class="small muted">{article.verification_note}</p><SourceList sources={article.sources} /></article>)}</div>
+    </div>
+  </div>
+</BaseLayout>

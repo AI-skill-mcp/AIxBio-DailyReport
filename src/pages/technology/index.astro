@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeading from '../../components/PageHeading.astro';
+import TaxonomyBranch from '../../components/TaxonomyBranch.astro';
+import TechnologyCard from '../../components/TechnologyCard.astro';
+import { taxonomy, technologies } from '../../lib/content';
+---
+<BaseLayout title="六层技术树 · AI × Bio" pageType="技术树">
+  <div class="wrap">
+    <PageHeading number="02" english="THE KNOWLEDGE TREE" title="把进展放回技术脉络" description="从人工智能到具体研究方法，沿六个层级展开。每个分支都有位置，每项技术都保留原理、限制与来源。" />
+    <div class="tree-layout">
+      <aside class="tree-guide"><span class="eyebrow">HOW TO EXPLORE</span><h2>一棵持续生长的技术树。</h2><p>点击节点展开分支，点击末端技术阅读详情。节点右侧数字表示关联的知识条目数。</p><div class="tree-guide-stats"><strong class="mono">{taxonomy.length}</strong><span>分类节点</span><strong class="mono">{technologies.length}</strong><span>技术知识条目</span></div><p class="small muted">分类为本项目的导航框架，不代表领域唯一或完整的分类标准。</p></aside>
+      <section class="taxonomy-tree" aria-label="六层技术分类"><div class="tree-toolbar"><span class="mono">ROOT → METHOD</span><span>点击 ＋ 展开</span></div><TaxonomyBranch parentId={null} /></section>
+    </div>
+    <section class="section" aria-labelledby="technologies-title"><div class="section-heading"><div><p class="eyebrow">FOUNDATIONAL KNOWLEDGE</p><h2 id="technologies-title">从这里，深入一层<span class="heading-dot">.</span></h2></div><span class="mono muted">{technologies.length} ENTRIES</span></div><div class="technology-grid">{technologies.map((technology, index) => <TechnologyCard technology={technology} index={index} />)}</div></section>
+  </div>
+</BaseLayout>
