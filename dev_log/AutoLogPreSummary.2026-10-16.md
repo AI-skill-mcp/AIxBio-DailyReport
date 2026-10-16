@@ -20,6 +20,6 @@
 - 全部网站页面、六层技术导航、Pagefind 中英文搜索和已发布档案下载；3 个一手来源核验的基础知识条目，无历史日报。
 - Markdown/JSON Schema 校验、确定性生成和 14 个发布门禁测试；类型检查及静态构建通过。
 - 独立集成副本验证日报、机会与下载完整链路，160 内部链接和 15 锚点有效，草稿未进入公开产物和搜索。
-- Pages Source=GitHub Actions，Custom domain=bioinformatic.tech；用户仍需修改主域 A 与 www CNAME，DNS 生效后启用 HTTPS。
+- Pages Source=GitHub Actions，Custom domain=bioinformatic.tech；主域四条 GitHub Pages A 与 www CNAME 已配置，TTL 600。两个权威 DNS 和公共解析器已确认生效；HTTPS 待 GitHub 域名证书签发后启用。
 - 个人博客 ben-air.cn 与本站独立绑定域名，不互相冲突；未操作博客设置。
-- 已推送开发分支并创建 PR #1：https://github.com/AI-skill-mcp/AIxBio-DailyReport/pull/1 。实现提交 99bda2b 的 GitHub Actions 校验/测试/构建全部成功，部署按 PR 条件跳过。尚未合并 main。
+- PR #1 已按用户授权合并，main 合并提交 36a9e594b394ca26c0fc4a91000de7a7afc7ac94；生产构建与 Pages 部署运行 38863512282 均 success。HTTP 主域 200，www 301 到主域，HTTPS 证书尚待签发。

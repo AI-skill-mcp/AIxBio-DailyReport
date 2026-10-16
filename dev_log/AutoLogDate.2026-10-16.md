@@ -49,3 +49,23 @@
 - 已创建 [PR #1：建设 AI × Bio 技术情报网站与可核验的每日档案](https://github.com/AI-skill-mcp/AIxBio-DailyReport/pull/1)，通过已登录网页提交；连接器可读但创建 PR 返回 403，未扩大连接器权限。
 - GitHub Actions [首次运行 38862717001](https://github.com/AI-skill-mcp/AIxBio-DailyReport/actions/runs/38862717001)：锁文件安装、内容/类型校验、14 项测试、静态构建、上传产物全部 success；PR 部署作业按设计 skipped。
 - 留待维护者审阅合并，以及域名服务商 DNS 配置与证书就绪后的 HTTPS 核对。
+
+### 按用户授权合并上线
+
+- 用户明确要求直接合并推送并配置主域解析，已复核 PR #1 最新 head `6dd69183984d944d951b9f0ed68b6ac54b47da05` 的 Actions 为 success，且可合并。
+- 通过已登录 GitHub 网页合并 PR #1，GitHub API 确认 merged=true；合并提交 `36a9e594b394ca26c0fc4a91000de7a7afc7ac94` 已进入 main，触发生产部署。
+- 在当前任务工作目录同步仓库，读取当日摘要和日志；建立本机 base.mdc 规则软链接，不改 sources/ 只读参考材料。
+- 修改前权威 DNS 复核：主域无 A/AAAA/CNAME，www 为 ben-air.cn，TTL 600；无主域旧地址需要覆盖。
+
+### 主域 A 记录落地
+
+- 阿里云云解析中新增 @ 的 A 记录：185.199.108.153、185.199.109.153、185.199.110.153、185.199.111.153，默认线路，轮询，TTL 10 分钟，全部启用。
+- 两次确认后控制台记录数从 5 增至 9，四条新增记录创建时间为 2026-10-16 14:54:42（UTC+8）。原有 blog、smtp、pop3、www、mail 暂未改动；继续处理本站 www。
+
+### DNS 与生产部署核验
+
+- www CNAME 已从 ben-air.cn 改为 ai-skill-mcp.github.io，TTL 600，启用；控制台最新更新时间 2026-10-16 14:57:11（UTC+8）。没有操作 ben-air.cn 自身的域名或 DNS；bioinformatic.tech 的 blog、smtp、pop3、mail 记录保留。
+- 两个权威 NS（dns11/dns12.hichina.com）与公共递归 1.1.1.1、8.8.8.8 均已确认四条 A 与新 www CNAME。部分本机递归仍有剩余 84 秒的旧 www 缓存，等待自然过期。
+- GitHub [生产运行 38863512282](https://github.com/AI-skill-mcp/AIxBio-DailyReport/actions/runs/38863512282) 构建和部署作业全部 success。
+- 主域 HTTP 200，www HTTP 301 到 http://bioinformatic.tech/；浏览器已在正式域名显示正确网站。
+- GitHub Pages 已从“DNS 未正确配置”转为“尚未签发域名证书”，Enforce HTTPS 暂不可选；直接 HTTPS 正常校验报告 SAN 不匹配，未绕过 TLS 检查。

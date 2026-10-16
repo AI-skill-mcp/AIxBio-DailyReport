@@ -6,8 +6,10 @@
 
 - 按用户明确要求，将仓库从私有改为公开，解除当前套餐对私有仓库 Pages 的限制。
 - Pages 的 Source 已保存为 **GitHub Actions**。
-- Custom domain 已保存为 **bioinformatic.tech**；DNS 尚待域名服务商配置，因此 HTTPS 暂不可用。
-- 网站开发代码通过 PR 审阅，未合并前不会发布。下面的设置步骤保留供重建或排错参考。
+- Custom domain 已保存为 **bioinformatic.tech**。
+- 按用户授权，[PR #1](https://github.com/AI-skill-mcp/AIxBio-DailyReport/pull/1) 已合并到 main，生产构建与 Pages 部署[均已成功](https://github.com/AI-skill-mcp/AIxBio-DailyReport/actions/runs/38863512282)。
+- 主域四条 A 记录和 `www → ai-skill-mcp.github.io` 已在阿里云保存，TTL 600 秒，权威 DNS 与公共解析器均已返回新记录；保留原有 blog、smtp、pop3、mail 记录。
+- HTTP 主域已返回 200，www 返回 301 到主域；当前 HTTPS 仍待 GitHub 签发域名证书，Pages 的 Enforce HTTPS 暂不可选。下面的设置步骤保留供重建或排错参考。
 
 个人博客的 `ben-air.cn` 与本站的 `bioinformatic.tech` 可以由不同仓库独立绑定。每个账号可有一个用户或组织主页，每个仓库可有一个项目站，项目站可单独设置域名。修改 `www.bioinformatic.tech` 的解析不改变 `ben-air.cn` 自身的 DNS。[GitHub 站点类型](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages)、[项目站独立域名](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages)
 
