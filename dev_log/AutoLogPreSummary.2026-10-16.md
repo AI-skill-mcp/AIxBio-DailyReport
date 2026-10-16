@@ -20,6 +20,6 @@
 - 全部网站页面、六层技术导航、Pagefind 中英文搜索和已发布档案下载；3 个一手来源核验的基础知识条目，无历史日报。
 - Markdown/JSON Schema 校验、确定性生成和 14 个发布门禁测试；类型检查及静态构建通过。
 - 独立集成副本验证日报、机会与下载完整链路，160 内部链接和 15 锚点有效，草稿未进入公开产物和搜索。
-- Pages Source=GitHub Actions，Custom domain=bioinformatic.tech；主域四条 GitHub Pages A 与 www CNAME 已配置，TTL 600。两个权威 DNS 和公共解析器已确认生效；HTTPS 待 GitHub 域名证书签发后启用。
+- Pages Source=GitHub Actions，Custom domain=bioinformatic.tech；主域四条 GitHub Pages A 与 www CNAME 已配置，TTL 600。两个权威 DNS 和公共解析器已确认生效；DNS 检查通过，Enforce HTTPS 已启用。
 - 个人博客 ben-air.cn 与本站独立绑定域名，不互相冲突；未操作博客设置。
-- PR #1 已按用户授权合并，main 合并提交 36a9e594b394ca26c0fc4a91000de7a7afc7ac94；生产构建与 Pages 部署运行 38863512282 均 success。HTTP 主域 200，www 301 到主域，HTTPS 证书尚待签发。
+- PR #1 已按用户授权合并，main 合并提交 36a9e594b394ca26c0fc4a91000de7a7afc7ac94；生产构建与 Pages 部署运行 38863512282、38864422060 均 success。2026-10-16 15:02（UTC+8）正常 TLS 校验通过，HTTPS 主域 200，HTTPS www 与两个 HTTP 地址均 301 到 HTTPS 主域。

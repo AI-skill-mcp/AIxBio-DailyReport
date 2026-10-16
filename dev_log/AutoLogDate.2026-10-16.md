@@ -69,3 +69,10 @@
 - GitHub [生产运行 38863512282](https://github.com/AI-skill-mcp/AIxBio-DailyReport/actions/runs/38863512282) 构建和部署作业全部 success。
 - 主域 HTTP 200，www HTTP 301 到 http://bioinformatic.tech/；浏览器已在正式域名显示正确网站。
 - GitHub Pages 已从“DNS 未正确配置”转为“尚未签发域名证书”，Enforce HTTPS 暂不可选；直接 HTTPS 正常校验报告 SAN 不匹配，未绕过 TLS 检查。
+
+### HTTPS 完成与最终上线状态
+
+- GitHub Pages 随后显示 DNS check successful，证书就绪；已勾选并保存 Enforce HTTPS。
+- 2026-10-16 15:02:49–15:02:53（UTC+8）正常 TLS 验证通过：HTTPS 主域 200，HTTPS www 301 到 https://bioinformatic.tech/，HTTP 主域和 www 均 301 到相同 HTTPS 主域。
+- 文档状态提交 4491b65bf4b95f61d926cdb0e3b0cbb94677ee50 已推送 main；运行 38864422060 的构建、校验与部署全部 success。
+- 更新部署文档，移除旧的“尚需配置 DNS/证书”状态；合并、生产部署、主域解析、www 跳转、HTTPS 均已完成。

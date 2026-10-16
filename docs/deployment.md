@@ -1,6 +1,6 @@
 # GitHub Pages 与自定义域名部署
 
-目标仓库：[AI-skill-mcp/AIxBio-DailyReport](https://github.com/AI-skill-mcp/AIxBio-DailyReport)。目标地址：[https://bioinformatic.tech](https://bioinformatic.tech)。本文说明代码合并后的上线步骤；提交这些配置不代表网站已经部署，也不代表 DNS 已经生效。
+目标仓库：[AI-skill-mcp/AIxBio-DailyReport](https://github.com/AI-skill-mcp/AIxBio-DailyReport)。正式地址：[https://bioinformatic.tech](https://bioinformatic.tech)。本文记录已完成的上线状态，并保留重建与排错步骤。
 
 ### 本次已完成的远程设置（2026-10-16）
 
@@ -9,7 +9,7 @@
 - Custom domain 已保存为 **bioinformatic.tech**。
 - 按用户授权，[PR #1](https://github.com/AI-skill-mcp/AIxBio-DailyReport/pull/1) 已合并到 main，生产构建与 Pages 部署[均已成功](https://github.com/AI-skill-mcp/AIxBio-DailyReport/actions/runs/38863512282)。
 - 主域四条 A 记录和 `www → ai-skill-mcp.github.io` 已在阿里云保存，TTL 600 秒，权威 DNS 与公共解析器均已返回新记录；保留原有 blog、smtp、pop3、mail 记录。
-- HTTP 主域已返回 200，www 返回 301 到主域；当前 HTTPS 仍待 GitHub 签发域名证书，Pages 的 Enforce HTTPS 暂不可选。下面的设置步骤保留供重建或排错参考。
+- GitHub Pages 显示 **DNS check successful**，已启用 **Enforce HTTPS**。2026-10-16 15:02（UTC+8）正常 TLS 校验通过，HTTPS 主域返回 200，HTTPS www 和两个 HTTP 地址均返回 301 到 `https://bioinformatic.tech/`。下面的设置步骤保留供重建或排错参考。
 
 个人博客的 `ben-air.cn` 与本站的 `bioinformatic.tech` 可以由不同仓库独立绑定。每个账号可有一个用户或组织主页，每个仓库可有一个项目站，项目站可单独设置域名。修改 `www.bioinformatic.tech` 的解析不改变 `ben-air.cn` 自身的 DNS。[GitHub 站点类型](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages)、[项目站独立域名](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages)
 
@@ -33,7 +33,9 @@ pnpm build
 
 采用 GitHub 与 pnpm 官方开源 Actions，并固定完整提交 SHA，旁注对应版本。升级时先核对官方 release、提交及运行环境，再通过 PR 更新 SHA。固定版本减少上游标签变动的影响，但仍需维护依赖与 Actions 的安全更新。部署使用 GitHub 自动提供的令牌，无需添加个人访问令牌。[GitHub 自定义工作流说明](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
 
-## 用户需要完成的 GitHub 设置
+## GitHub 设置参考
+
+本次发布源、自定义域名与合并部署已经完成。以下步骤用于重建；环境分支限制与组织域名验证可按维护策略进一步配置。
 
 1. 审阅并合并开发 PR。确认站点内容及历史新闻的核验记录，再允许其进入 `main`。
 2. 打开[仓库 Pages 设置](https://github.com/AI-skill-mcp/AIxBio-DailyReport/settings/pages)，将 **Build and deployment → Source** 选择为 **GitHub Actions**。配置发布源需要仓库管理员或维护者权限。
@@ -45,9 +47,9 @@ pnpm build
 
 Astro 的 `site` 应为 `https://bioinformatic.tech`，自定义主域名的 `base` 应为 `/`。若临时改用默认项目地址 `https://AI-skill-mcp.github.io/AIxBio-DailyReport/`，还需配套调整 `site`、`base` 与内部链接；当前域名配置不能直接当作默认项目路径使用。[Astro 官方 Pages 指南](https://docs.astro.build/en/guides/deploy/github/)
 
-## 用户需要完成的 DNS 设置
+## DNS 设置参考
 
-2026-10-16 的公共 DNS 查询结果：`bioinformatic.tech` 的 `A`、`AAAA` 查询均为 `NOERROR` 且没有地址应答；`www.bioinformatic.tech` 当前 `CNAME` 为 `ben-air.cn`。本次未修改这些记录，尚需用户将下列网站解析配置到 GitHub Pages。
+本次已新增主域四条 A 记录，并将 `www.bioinformatic.tech` 的 CNAME 从 `ben-air.cn` 改为 `ai-skill-mcp.github.io`，TTL 均为 600 秒。两个权威 DNS 和公共解析器已确认返回新记录；未添加可选的 IPv6 地址。
 
 在域名服务商控制台先检查现有记录，保留邮件等无关用途的记录。为以下网站主机替换冲突的旧解析，不配置通配符。
 
