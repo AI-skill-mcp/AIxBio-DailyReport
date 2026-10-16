@@ -22,3 +22,4 @@
 - 独立集成副本验证日报、机会与下载完整链路，160 内部链接和 15 锚点有效，草稿未进入公开产物和搜索。
 - Pages Source=GitHub Actions，Custom domain=bioinformatic.tech；用户仍需修改主域 A 与 www CNAME，DNS 生效后启用 HTTPS。
 - 个人博客 ben-air.cn 与本站独立绑定域名，不互相冲突；未操作博客设置。
+- 已推送开发分支并创建 PR #1：https://github.com/AI-skill-mcp/AIxBio-DailyReport/pull/1 。实现提交 99bda2b 的 GitHub Actions 校验/测试/构建全部成功，部署按 PR 条件跳过。尚未合并 main。

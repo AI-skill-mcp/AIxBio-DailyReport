@@ -42,3 +42,10 @@
 - 手机视口 390×844 检查首页、导航、技术树，完整展开六层后页面宽度仍为 390，无横向溢出；技术详情正确显示原始发表日与核验日。
 - 独立临时副本加入一份仅集成测试的 published 日报与 draft 标记：日报详情、md/json 下载、机会关联正常；160 内链和 15 锚点均有效；40 个网站文件和 13 个压缩搜索文件均无草稿标记，草稿搜索返回 0。测试数据未写回项目。
 - 当前正式数据仍是 3 条基础技术、0 期日报。原 ChatGPT 定时任务尚未接入，未伪造自动采编结果。
+
+### 开发分支与 PR 交付
+
+- 实现提交 `99bda2bd46681745a38eed1a6deefa8448c130f9` 已推送到 codex/aixbio-intelligence-site；main 保持初始提交不变。
+- 已创建 [PR #1：建设 AI × Bio 技术情报网站与可核验的每日档案](https://github.com/AI-skill-mcp/AIxBio-DailyReport/pull/1)，通过已登录网页提交；连接器可读但创建 PR 返回 403，未扩大连接器权限。
+- GitHub Actions [首次运行 38862717001](https://github.com/AI-skill-mcp/AIxBio-DailyReport/actions/runs/38862717001)：锁文件安装、内容/类型校验、14 项测试、静态构建、上传产物全部 success；PR 部署作业按设计 skipped。
+- 留待维护者审阅合并，以及域名服务商 DNS 配置与证书就绪后的 HTTPS 核对。
