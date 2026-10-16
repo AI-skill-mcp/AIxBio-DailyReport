@@ -1,5 +1,7 @@
 [
   { "id": "google-deepmind", "name": "Google DeepMind", "english_name": "Google DeepMind", "url": "https://deepmind.google/" },
   { "id": "isomorphic-labs", "name": "Isomorphic Labs", "english_name": "Isomorphic Labs", "url": "https://www.isomorphiclabs.com/" },
-  { "id": "uw-protein-design", "name": "华盛顿大学蛋白质设计研究所", "english_name": "UW Institute for Protein Design", "url": "https://www.ipd.uw.edu/" }
+  { "id": "uw-protein-design", "name": "华盛顿大学蛋白质设计研究所", "english_name": "UW Institute for Protein Design", "url": "https://www.ipd.uw.edu/" },
+  { "id": "openbind", "name": "OpenBind 联盟", "english_name": "OpenBind Consortium", "url": "https://openbind.uk/" },
+  { "id": "insitro", "name": "insitro", "english_name": "insitro", "url": "https://www.insitro.com/" }
 ]

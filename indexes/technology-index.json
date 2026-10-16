@@ -14,6 +14,54 @@
     "latest_report_date": null
   },
   {
+    "id": "antigravity-science-workflows",
+    "name": "Antigravity 科研智能体流程",
+    "technology_path": [
+      "ai-science",
+      "ai-biology",
+      "life-science-evidence",
+      "scientific-workflow-orchestration",
+      "agent-assisted-evidence-synthesis",
+      "antigravity-science-orchestration"
+    ],
+    "article_ids": [
+      "20261016-001"
+    ],
+    "latest_report_date": "2026-10-16"
+  },
+  {
+    "id": "insitro-virtual-human",
+    "name": "insitro Virtual Human 因果发现平台",
+    "technology_path": [
+      "ai-science",
+      "ai-biology",
+      "human-disease-biology",
+      "causal-target-discovery",
+      "multimodal-genetic-integration",
+      "virtual-human-causal-modeling"
+    ],
+    "article_ids": [
+      "20261016-003"
+    ],
+    "latest_report_date": "2026-10-16"
+  },
+  {
+    "id": "openbind-blind-evaluation",
+    "name": "OpenBind 蛋白质配体结构盲测",
+    "technology_path": [
+      "ai-science",
+      "ai-biology",
+      "biomolecular-modeling",
+      "protein-ligand-evaluation",
+      "prospective-blind-benchmarking",
+      "multi-metric-structure-blind-tests"
+    ],
+    "article_ids": [
+      "20261016-002"
+    ],
+    "latest_report_date": "2026-10-16"
+  },
+  {
     "id": "rfdiffusion",
     "name": "RFdiffusion 蛋白质设计",
     "technology_path": [

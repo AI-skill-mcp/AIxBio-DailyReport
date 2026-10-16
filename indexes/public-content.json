@@ -90,6 +90,83 @@
       "english_name": "Generative Cell Transformers",
       "parent_id": "single-cell-foundation-models",
       "level": 6
+    },
+    {
+      "id": "life-science-evidence",
+      "name": "生命科学研究证据",
+      "english_name": "Life-science Evidence",
+      "parent_id": "ai-biology",
+      "level": 3
+    },
+    {
+      "id": "scientific-workflow-orchestration",
+      "name": "科研流程编排",
+      "english_name": "Scientific Workflow Orchestration",
+      "parent_id": "life-science-evidence",
+      "level": 4
+    },
+    {
+      "id": "agent-assisted-evidence-synthesis",
+      "name": "智能体辅助证据整合",
+      "english_name": "Agent-assisted Evidence Synthesis",
+      "parent_id": "scientific-workflow-orchestration",
+      "level": 5
+    },
+    {
+      "id": "antigravity-science-orchestration",
+      "name": "Antigravity 科研工作台编排",
+      "english_name": "Antigravity Science Orchestration",
+      "parent_id": "agent-assisted-evidence-synthesis",
+      "level": 6
+    },
+    {
+      "id": "protein-ligand-evaluation",
+      "name": "蛋白质配体结构评测",
+      "english_name": "Protein-ligand Structure Evaluation",
+      "parent_id": "biomolecular-modeling",
+      "level": 4
+    },
+    {
+      "id": "prospective-blind-benchmarking",
+      "name": "前瞻性盲测",
+      "english_name": "Prospective Blind Benchmarking",
+      "parent_id": "protein-ligand-evaluation",
+      "level": 5
+    },
+    {
+      "id": "multi-metric-structure-blind-tests",
+      "name": "多指标结构盲测",
+      "english_name": "Multi-metric Structure Blind Tests",
+      "parent_id": "prospective-blind-benchmarking",
+      "level": 6
+    },
+    {
+      "id": "human-disease-biology",
+      "name": "人类疾病生物学",
+      "english_name": "Human Disease Biology",
+      "parent_id": "ai-biology",
+      "level": 3
+    },
+    {
+      "id": "causal-target-discovery",
+      "name": "因果靶点发现",
+      "english_name": "Causal Target Discovery",
+      "parent_id": "human-disease-biology",
+      "level": 4
+    },
+    {
+      "id": "multimodal-genetic-integration",
+      "name": "多模态遗传证据整合",
+      "english_name": "Multimodal Genetic Evidence Integration",
+      "parent_id": "causal-target-discovery",
+      "level": 5
+    },
+    {
+      "id": "virtual-human-causal-modeling",
+      "name": "Virtual Human 因果生物学建模",
+      "english_name": "Virtual Human Causal Biology Modeling",
+      "parent_id": "multimodal-genetic-integration",
+      "level": 6
     }
   ],
   "technologies": [
@@ -122,6 +199,105 @@
           "organization_ids": [
             "google-deepmind",
             "isomorphic-labs"
+          ]
+        }
+      ],
+      "related_ids": []
+    },
+    {
+      "id": "antigravity-science-workflows",
+      "name": "Antigravity 科研智能体流程",
+      "english_name": "Antigravity Agentic Science Workflows",
+      "summary": "由研究者引导智能体协调数据库、文献与结构证据的科研工作台流程。",
+      "description": "Google将Antigravity定位为可扩展科研工作台。这里记录人机协作流程，不将某次候选发现当作已验证药物成果。",
+      "method": "研究者确定问题和证据要求，智能体协调信息检索、分析与共享结构查看，供研究者逐步审查与修订假设。",
+      "limitations": "公开材料是提供方的流程展示，未给出通用准确率或独立对照评估；抗微生物候选尚待湿实验验证。工具输出、功能推断与真实疗效须分别判断。",
+      "technology_path": [
+        "ai-science",
+        "ai-biology",
+        "life-science-evidence",
+        "scientific-workflow-orchestration",
+        "agent-assisted-evidence-synthesis",
+        "antigravity-science-orchestration"
+      ],
+      "sources": [
+        {
+          "title": "Accelerating the search for antimicrobial peptides with Google Antigravity",
+          "url": "https://deepmind.google/blog/accelerating-antimicrobial-discovery/",
+          "publisher": "Google DeepMind",
+          "type": "official",
+          "published_at": "2026-10-15",
+          "checked_at": "2026-10-16",
+          "verification_status": "verified",
+          "verification_note": "核对页头日期及 Collaborative intelligence、3D canvas 和结尾限制说明；原文明确候选仍在湿实验验证。另读官方科学平台 https://antigravity.google/use-cases/science 与其链接的 science-skills 仓库确认工具定位；平台页无明确发布日期，未用核验日替代发布日期。本条核验的是官方流程描述，不代表独立复现或抗菌疗效确认。",
+          "organization_ids": [
+            "google-deepmind"
+          ]
+        }
+      ],
+      "related_ids": []
+    },
+    {
+      "id": "insitro-virtual-human",
+      "name": "insitro Virtual Human 因果发现平台",
+      "english_name": "insitro Virtual Human",
+      "summary": "insitro用于整合人类遗传与多模态表型证据、提出疾病靶点假设的平台。",
+      "description": "按公司公开定位，Virtual Human关注疾病机制与靶点选择，TherML承担后续治疗方式设计；两者不应混称单一临床模型。",
+      "method": "整合人类遗传、表型、成像与遗传扰动证据，利用机器学习形成可继续检验的疾病机制和靶点假设。",
+      "limitations": "该条目仅总结公司公开方法定位；完整架构、训练数据与独立基准未在所核对材料中披露。因果性主张需结合具体实验，合作公告本身不能证明临床有效性。",
+      "technology_path": [
+        "ai-science",
+        "ai-biology",
+        "human-disease-biology",
+        "causal-target-discovery",
+        "multimodal-genetic-integration",
+        "virtual-human-causal-modeling"
+      ],
+      "sources": [
+        {
+          "title": "Introducing insitro’s TherML: Rapidly engineering the right therapeutic for the right target",
+          "url": "https://www.insitro.com/news/introducing-insitros-therml-rapidly-engineering-the-right-therapeutic-for-the-right-target/",
+          "publisher": "insitro",
+          "type": "official",
+          "published_at": "2026-01-12",
+          "checked_at": "2026-10-16",
+          "verification_status": "verified",
+          "verification_note": "核对页头01/12/2026及Virtual Human段落，支持遗传、表型、成像和扰动证据整合以及与TherML职责区分。另读官方Platform、Purpose页与3月23日Virtual Human说明作背景交叉检查；仅确认公司公开的方法定位，不把营销或细胞研究等同完整架构公开或临床验证。",
+          "organization_ids": [
+            "insitro"
+          ]
+        }
+      ],
+      "related_ids": []
+    },
+    {
+      "id": "openbind-blind-evaluation",
+      "name": "OpenBind 蛋白质配体结构盲测",
+      "english_name": "OpenBind Blind Protein-ligand Evaluation",
+      "summary": "在参考结合结构暂不公开时，联合评估配体姿态、相互作用与物理合理性的结构预测测试。",
+      "description": "这是评测方法条目，不是新模型或性能榜单。首轮挑战允许有既有结构信息的靶标，针对未公开参考结合结构进行预测。",
+      "method": "以X射线参考结构作为盲测依据；官方要求同时满足配体BiSyRMSD小于1.5 Å、lDDT-PLI大于0.8及全部PoseBusters有效性检查。",
+      "limitations": "单一靶标上的结构恢复不能推出跨靶标泛化、结合亲和力或治疗效果；已有结构信息也要求检查训练与评测暴露。挑战尚在进行，不能从开放公告推导性能结论。",
+      "technology_path": [
+        "ai-science",
+        "ai-biology",
+        "biomolecular-modeling",
+        "protein-ligand-evaluation",
+        "prospective-blind-benchmarking",
+        "multi-metric-structure-blind-tests"
+      ],
+      "sources": [
+        {
+          "title": "Announcing the first OpenBind Blind Challenge: Zika virus NS2B-NS3 protease",
+          "url": "https://openbind.uk/news/announcing-the-first-openbind-blind-challenge-zika-virus-ns2b-ns3-protease-2/",
+          "publisher": "OpenBind",
+          "type": "official",
+          "published_at": "2026-10-14",
+          "checked_at": "2026-10-16",
+          "verification_status": "verified",
+          "verification_note": "当前页面页头标注10月14日，时间表另列9月30日预告、10月14日开放、11月11日23:59 UTC阶段截止、12月16日23:59 UTC最终截止；分别记录，不把预告日期当当前版本发布日期。核对数据规模、参考结构暂不开放及三项联合评测条件；另读官方Concept页确认开放数据与盲测定位，无独立成绩可核验。",
+          "organization_ids": [
+            "openbind"
           ]
         }
       ],
@@ -192,7 +368,335 @@
       "related_ids": []
     }
   ],
-  "reports": [],
-  "articles": [],
-  "opportunities": []
+  "reports": [
+    {
+      "version": "1.0",
+      "report_type": "AIxBio-Daily",
+      "date": "2026-10-16",
+      "title": "AI × Bio 每日简报 · 2026-10-16",
+      "summary": "首期精选近72小时内发布的一手来源：科研智能体流程、开放结构盲测与AI靶点发现合作。以下区分已核对的公告事实、尚未完成的验证及编辑提出的研究机会；不将预测、潜在里程碑或挑战开放误作实验成果、实收收入或性能结果。",
+      "status": "published",
+      "articles": [
+        {
+          "id": "20261016-001",
+          "event_date": "2026-10-15",
+          "title": "Antigravity展示抗微生物候选检索流程，湿实验验证仍在进行",
+          "category": "科研智能体",
+          "summary": "Google DeepMind展示了由研究者引导的跨数据库、文献与结构证据整合流程。文中候选正进行湿实验验证，当前不是新抗生素疗效的确认。",
+          "technology_path": [
+            "ai-science",
+            "ai-biology",
+            "life-science-evidence",
+            "scientific-workflow-orchestration",
+            "agent-assisted-evidence-synthesis",
+            "antigravity-science-orchestration"
+          ],
+          "related_technology_ids": [
+            "antigravity-science-workflows"
+          ],
+          "technical_details": {
+            "problem": "生物学证据分散在多个数据库与分析工具中，研究者需要反复整理和审查。",
+            "method": "智能体协助协调检索、结构查看与证据归纳，研究者持续决定问题与检验方向。",
+            "innovation": "将信息协调与共享三维查看整合为人机协作流程；这是官方展示的流程集成，非通用性能提升证明。",
+            "limitations": "预测功能与机制仍是假设；原文明示候选待湿实验验证，尚不能据此确认抗菌疗效或安全性。"
+          },
+          "opportunities": [],
+          "sources": [
+            {
+              "title": "Accelerating the search for antimicrobial peptides with Google Antigravity",
+              "url": "https://deepmind.google/blog/accelerating-antimicrobial-discovery/",
+              "publisher": "Google DeepMind",
+              "type": "official",
+              "published_at": "2026-10-15",
+              "checked_at": "2026-10-16",
+              "verification_status": "verified",
+              "verification_note": "核对页头日期及 Collaborative intelligence、3D canvas 和结尾限制说明；原文明确候选仍在湿实验验证。另读官方科学平台 https://antigravity.google/use-cases/science 与其链接的 science-skills 仓库确认工具定位；平台页无明确发布日期，未用核验日替代发布日期。本条核验的是官方流程描述，不代表独立复现或抗菌疗效确认。",
+              "organization_ids": [
+                "google-deepmind"
+              ]
+            }
+          ],
+          "verification_status": "verified",
+          "verification_note": "核对10月15日原文日期、研究者引导的证据整合流程与湿实验验证状态；原文尚未报告该候选的实验疗效。"
+        },
+        {
+          "id": "20261016-002",
+          "event_date": "2026-10-14",
+          "title": "OpenBind首轮盲测开放：400个化合物检验结构预测",
+          "category": "开放评测",
+          "summary": "OpenBind于10月14日开放Zika病毒NS2B-NS3蛋白酶结构预测盲测，覆盖400个化合物。11月11日为阶段截止、12月16日为最终截止，均为23:59 UTC；本次公告未提供模型性能比较，最终榜单须待挑战结束。",
+          "technology_path": [
+            "ai-science",
+            "ai-biology",
+            "biomolecular-modeling",
+            "protein-ligand-evaluation",
+            "prospective-blind-benchmarking",
+            "multi-metric-structure-blind-tests"
+          ],
+          "related_technology_ids": [
+            "openbind-blind-evaluation"
+          ],
+          "technical_details": {
+            "problem": "回顾性测试可能受已有结构信息影响，需要在参考结合结构未公开时检验预测方法。",
+            "method": "参赛者提交蛋白质配体复合物预测；官方联合检查姿态误差、界面准确度和物理合理性，而非只看一个距离指标。",
+            "innovation": "为对接、共折叠及组合流程提供统一的前瞻盲测场景；本轮仍允许使用既有公开靶标结构。",
+            "limitations": "这是单靶标结构评测，不衡量药效或临床价值；本次核验限于官方公告，未独立评估实时榜单或参赛模型成绩。"
+          },
+          "opportunities": [
+            {
+              "id": "20261016-002-reproducible-blind-baseline",
+              "title": "编辑机会：建立可复现且记录数据暴露的盲测基线",
+              "kind": "research",
+              "description": "编辑判断：可利用本轮挑战检查结构预测流程的边界，区分公开结构带来的帮助与真正的盲测表现；这不是已取得的研究结果。",
+              "next_step": "先阅读官方规则与数据许可，固定代码、模型和输入版本，记录已有结构及训练数据暴露情况；用官方教程检查提交格式，准备可复现的方法说明后再决定是否参赛。",
+              "technology_ids": [
+                "openbind-blind-evaluation"
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "title": "The first OpenBind Blind Challenge is now live!",
+              "url": "https://openbind.uk/news/the-first-openbind-blind-challenge-is-now-live/",
+              "publisher": "OpenBind",
+              "type": "official",
+              "published_at": "2026-10-14",
+              "checked_at": "2026-10-16",
+              "verification_status": "verified",
+              "verification_note": "核对页头2026-10-14、400个化合物、11月11日后阶段榜单与12月16日截止表述；这是挑战开放公告，未给出参赛模型性能结果。",
+              "organization_ids": [
+                "openbind"
+              ]
+            },
+            {
+              "title": "Announcing the first OpenBind Blind Challenge: Zika virus NS2B-NS3 protease",
+              "url": "https://openbind.uk/news/announcing-the-first-openbind-blind-challenge-zika-virus-ns2b-ns3-protease-2/",
+              "publisher": "OpenBind",
+              "type": "official",
+              "published_at": "2026-10-14",
+              "checked_at": "2026-10-16",
+              "verification_status": "verified",
+              "verification_note": "当前页面页头标注10月14日，时间表另列9月30日预告、10月14日开放、11月11日23:59 UTC阶段截止、12月16日23:59 UTC最终截止；分别记录，不把预告日期当当前版本发布日期。核对数据规模、参考结构暂不开放及三项联合评测条件；另读官方Concept页确认开放数据与盲测定位，无独立成绩可核验。",
+              "organization_ids": [
+                "openbind"
+              ]
+            }
+          ],
+          "verification_status": "verified",
+          "verification_note": "两篇当前公告均标注10月14日；长公告时间表列9月30日预告，与开放日区分。逐项核对400个化合物、两阶段UTC截止和盲测定义；规则允许比赛期间展示实时榜单，本条不据公告推断其当前成绩。"
+        },
+        {
+          "id": "20261016-003",
+          "event_date": "2026-10-15",
+          "title": "insitro与AstraZeneca合作AI靶点发现，约定4000万美元首付",
+          "category": "AI药物发现合作",
+          "summary": "insitro宣布将Virtual Human平台用于MASH与心肌病的靶点发现合作。协议约定4000万美元首付，另有最高约14.6亿美元条件里程碑；潜在金额不等于已到账收入。",
+          "technology_path": [
+            "ai-science",
+            "ai-biology",
+            "human-disease-biology",
+            "causal-target-discovery",
+            "multimodal-genetic-integration",
+            "virtual-human-causal-modeling"
+          ],
+          "related_technology_ids": [
+            "insitro-virtual-human"
+          ],
+          "technical_details": {
+            "problem": "同一诊断标签下存在不同的疾病生物学，靶点选择需要更细的证据。",
+            "method": "按公告，insitro应用Virtual Human识别疾病驱动机制并推进指定靶点；AstraZeneca负责临床开发、监管和商业化。",
+            "innovation": "将平台能力用于两类疾病的独家研究合作，属于研发与商业安排进展，并非新模型架构发布。",
+            "limitations": "公告未公开完整架构或本次合作的临床验证；潜在里程碑须满足条件，不能当实收金额或药物成功证明。"
+          },
+          "opportunities": [],
+          "sources": [
+            {
+              "title": "insitro Announces a Strategic Collaboration with AstraZeneca for AI-enabled Discovery of Novel Therapeutics for MASH and Cardiomyopathies",
+              "url": "https://www.insitro.com/news/insitro-announces-a-strategic-collaboration-with-astrazeneca-for-ai-enabled-discovery-of-novel-therapeutics-for-mash-and-cardiomyopathies/",
+              "publisher": "insitro",
+              "type": "official",
+              "published_at": "2026-10-15",
+              "checked_at": "2026-10-16",
+              "verification_status": "verified",
+              "verification_note": "核对10月15日公告的适应证、双方职责和协议条款：4000万美元约定首付，最高约14.6亿美元为潜在发现/开发/商业里程碑，不能视为已到账收入。公告未提供完整模型架构、目标名单或该合作的临床验证；公司陈述并非独立疗效证据。",
+              "organization_ids": [
+                "insitro"
+              ]
+            }
+          ],
+          "verification_status": "verified",
+          "verification_note": "独立打开10月15日公司原公告，核对适应证、双方职责、4000万美元首付和最高约14.6亿美元潜在里程碑。来源为合作方公告；未据此声称已到账、靶点疗效或临床成功。"
+        }
+      ]
+    }
+  ],
+  "articles": [
+    {
+      "id": "20261016-001",
+      "event_date": "2026-10-15",
+      "title": "Antigravity展示抗微生物候选检索流程，湿实验验证仍在进行",
+      "category": "科研智能体",
+      "summary": "Google DeepMind展示了由研究者引导的跨数据库、文献与结构证据整合流程。文中候选正进行湿实验验证，当前不是新抗生素疗效的确认。",
+      "technology_path": [
+        "ai-science",
+        "ai-biology",
+        "life-science-evidence",
+        "scientific-workflow-orchestration",
+        "agent-assisted-evidence-synthesis",
+        "antigravity-science-orchestration"
+      ],
+      "related_technology_ids": [
+        "antigravity-science-workflows"
+      ],
+      "technical_details": {
+        "problem": "生物学证据分散在多个数据库与分析工具中，研究者需要反复整理和审查。",
+        "method": "智能体协助协调检索、结构查看与证据归纳，研究者持续决定问题与检验方向。",
+        "innovation": "将信息协调与共享三维查看整合为人机协作流程；这是官方展示的流程集成，非通用性能提升证明。",
+        "limitations": "预测功能与机制仍是假设；原文明示候选待湿实验验证，尚不能据此确认抗菌疗效或安全性。"
+      },
+      "opportunities": [],
+      "sources": [
+        {
+          "title": "Accelerating the search for antimicrobial peptides with Google Antigravity",
+          "url": "https://deepmind.google/blog/accelerating-antimicrobial-discovery/",
+          "publisher": "Google DeepMind",
+          "type": "official",
+          "published_at": "2026-10-15",
+          "checked_at": "2026-10-16",
+          "verification_status": "verified",
+          "verification_note": "核对页头日期及 Collaborative intelligence、3D canvas 和结尾限制说明；原文明确候选仍在湿实验验证。另读官方科学平台 https://antigravity.google/use-cases/science 与其链接的 science-skills 仓库确认工具定位；平台页无明确发布日期，未用核验日替代发布日期。本条核验的是官方流程描述，不代表独立复现或抗菌疗效确认。",
+          "organization_ids": [
+            "google-deepmind"
+          ]
+        }
+      ],
+      "verification_status": "verified",
+      "verification_note": "核对10月15日原文日期、研究者引导的证据整合流程与湿实验验证状态；原文尚未报告该候选的实验疗效。",
+      "reportDate": "2026-10-16"
+    },
+    {
+      "id": "20261016-002",
+      "event_date": "2026-10-14",
+      "title": "OpenBind首轮盲测开放：400个化合物检验结构预测",
+      "category": "开放评测",
+      "summary": "OpenBind于10月14日开放Zika病毒NS2B-NS3蛋白酶结构预测盲测，覆盖400个化合物。11月11日为阶段截止、12月16日为最终截止，均为23:59 UTC；本次公告未提供模型性能比较，最终榜单须待挑战结束。",
+      "technology_path": [
+        "ai-science",
+        "ai-biology",
+        "biomolecular-modeling",
+        "protein-ligand-evaluation",
+        "prospective-blind-benchmarking",
+        "multi-metric-structure-blind-tests"
+      ],
+      "related_technology_ids": [
+        "openbind-blind-evaluation"
+      ],
+      "technical_details": {
+        "problem": "回顾性测试可能受已有结构信息影响，需要在参考结合结构未公开时检验预测方法。",
+        "method": "参赛者提交蛋白质配体复合物预测；官方联合检查姿态误差、界面准确度和物理合理性，而非只看一个距离指标。",
+        "innovation": "为对接、共折叠及组合流程提供统一的前瞻盲测场景；本轮仍允许使用既有公开靶标结构。",
+        "limitations": "这是单靶标结构评测，不衡量药效或临床价值；本次核验限于官方公告，未独立评估实时榜单或参赛模型成绩。"
+      },
+      "opportunities": [
+        {
+          "id": "20261016-002-reproducible-blind-baseline",
+          "title": "编辑机会：建立可复现且记录数据暴露的盲测基线",
+          "kind": "research",
+          "description": "编辑判断：可利用本轮挑战检查结构预测流程的边界，区分公开结构带来的帮助与真正的盲测表现；这不是已取得的研究结果。",
+          "next_step": "先阅读官方规则与数据许可，固定代码、模型和输入版本，记录已有结构及训练数据暴露情况；用官方教程检查提交格式，准备可复现的方法说明后再决定是否参赛。",
+          "technology_ids": [
+            "openbind-blind-evaluation"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "The first OpenBind Blind Challenge is now live!",
+          "url": "https://openbind.uk/news/the-first-openbind-blind-challenge-is-now-live/",
+          "publisher": "OpenBind",
+          "type": "official",
+          "published_at": "2026-10-14",
+          "checked_at": "2026-10-16",
+          "verification_status": "verified",
+          "verification_note": "核对页头2026-10-14、400个化合物、11月11日后阶段榜单与12月16日截止表述；这是挑战开放公告，未给出参赛模型性能结果。",
+          "organization_ids": [
+            "openbind"
+          ]
+        },
+        {
+          "title": "Announcing the first OpenBind Blind Challenge: Zika virus NS2B-NS3 protease",
+          "url": "https://openbind.uk/news/announcing-the-first-openbind-blind-challenge-zika-virus-ns2b-ns3-protease-2/",
+          "publisher": "OpenBind",
+          "type": "official",
+          "published_at": "2026-10-14",
+          "checked_at": "2026-10-16",
+          "verification_status": "verified",
+          "verification_note": "当前页面页头标注10月14日，时间表另列9月30日预告、10月14日开放、11月11日23:59 UTC阶段截止、12月16日23:59 UTC最终截止；分别记录，不把预告日期当当前版本发布日期。核对数据规模、参考结构暂不开放及三项联合评测条件；另读官方Concept页确认开放数据与盲测定位，无独立成绩可核验。",
+          "organization_ids": [
+            "openbind"
+          ]
+        }
+      ],
+      "verification_status": "verified",
+      "verification_note": "两篇当前公告均标注10月14日；长公告时间表列9月30日预告，与开放日区分。逐项核对400个化合物、两阶段UTC截止和盲测定义；规则允许比赛期间展示实时榜单，本条不据公告推断其当前成绩。",
+      "reportDate": "2026-10-16"
+    },
+    {
+      "id": "20261016-003",
+      "event_date": "2026-10-15",
+      "title": "insitro与AstraZeneca合作AI靶点发现，约定4000万美元首付",
+      "category": "AI药物发现合作",
+      "summary": "insitro宣布将Virtual Human平台用于MASH与心肌病的靶点发现合作。协议约定4000万美元首付，另有最高约14.6亿美元条件里程碑；潜在金额不等于已到账收入。",
+      "technology_path": [
+        "ai-science",
+        "ai-biology",
+        "human-disease-biology",
+        "causal-target-discovery",
+        "multimodal-genetic-integration",
+        "virtual-human-causal-modeling"
+      ],
+      "related_technology_ids": [
+        "insitro-virtual-human"
+      ],
+      "technical_details": {
+        "problem": "同一诊断标签下存在不同的疾病生物学，靶点选择需要更细的证据。",
+        "method": "按公告，insitro应用Virtual Human识别疾病驱动机制并推进指定靶点；AstraZeneca负责临床开发、监管和商业化。",
+        "innovation": "将平台能力用于两类疾病的独家研究合作，属于研发与商业安排进展，并非新模型架构发布。",
+        "limitations": "公告未公开完整架构或本次合作的临床验证；潜在里程碑须满足条件，不能当实收金额或药物成功证明。"
+      },
+      "opportunities": [],
+      "sources": [
+        {
+          "title": "insitro Announces a Strategic Collaboration with AstraZeneca for AI-enabled Discovery of Novel Therapeutics for MASH and Cardiomyopathies",
+          "url": "https://www.insitro.com/news/insitro-announces-a-strategic-collaboration-with-astrazeneca-for-ai-enabled-discovery-of-novel-therapeutics-for-mash-and-cardiomyopathies/",
+          "publisher": "insitro",
+          "type": "official",
+          "published_at": "2026-10-15",
+          "checked_at": "2026-10-16",
+          "verification_status": "verified",
+          "verification_note": "核对10月15日公告的适应证、双方职责和协议条款：4000万美元约定首付，最高约14.6亿美元为潜在发现/开发/商业里程碑，不能视为已到账收入。公告未提供完整模型架构、目标名单或该合作的临床验证；公司陈述并非独立疗效证据。",
+          "organization_ids": [
+            "insitro"
+          ]
+        }
+      ],
+      "verification_status": "verified",
+      "verification_note": "独立打开10月15日公司原公告，核对适应证、双方职责、4000万美元首付和最高约14.6亿美元潜在里程碑。来源为合作方公告；未据此声称已到账、靶点疗效或临床成功。",
+      "reportDate": "2026-10-16"
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "20261016-002-reproducible-blind-baseline",
+      "title": "编辑机会：建立可复现且记录数据暴露的盲测基线",
+      "kind": "research",
+      "description": "编辑判断：可利用本轮挑战检查结构预测流程的边界，区分公开结构带来的帮助与真正的盲测表现；这不是已取得的研究结果。",
+      "next_step": "先阅读官方规则与数据许可，固定代码、模型和输入版本，记录已有结构及训练数据暴露情况；用官方教程检查提交格式，准备可复现的方法说明后再决定是否参赛。",
+      "technology_ids": [
+        "openbind-blind-evaluation"
+      ],
+      "articleId": "20261016-002",
+      "reportDate": "2026-10-16"
+    }
+  ]
 }

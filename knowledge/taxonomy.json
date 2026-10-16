@@ -11,5 +11,16 @@
   { "id": "single-cell-omics", "name": "单细胞组学", "english_name": "Single-cell Omics", "parent_id": "ai-biology", "level": 3 },
   { "id": "cell-representation", "name": "细胞表示学习", "english_name": "Cell Representation Learning", "parent_id": "single-cell-omics", "level": 4 },
   { "id": "single-cell-foundation-models", "name": "单细胞基础模型", "english_name": "Single-cell Foundation Models", "parent_id": "cell-representation", "level": 5 },
-  { "id": "generative-cell-transformers", "name": "生成式细胞 Transformer", "english_name": "Generative Cell Transformers", "parent_id": "single-cell-foundation-models", "level": 6 }
+  { "id": "generative-cell-transformers", "name": "生成式细胞 Transformer", "english_name": "Generative Cell Transformers", "parent_id": "single-cell-foundation-models", "level": 6 },
+  { "id": "life-science-evidence", "name": "生命科学研究证据", "english_name": "Life-science Evidence", "parent_id": "ai-biology", "level": 3 },
+  { "id": "scientific-workflow-orchestration", "name": "科研流程编排", "english_name": "Scientific Workflow Orchestration", "parent_id": "life-science-evidence", "level": 4 },
+  { "id": "agent-assisted-evidence-synthesis", "name": "智能体辅助证据整合", "english_name": "Agent-assisted Evidence Synthesis", "parent_id": "scientific-workflow-orchestration", "level": 5 },
+  { "id": "antigravity-science-orchestration", "name": "Antigravity 科研工作台编排", "english_name": "Antigravity Science Orchestration", "parent_id": "agent-assisted-evidence-synthesis", "level": 6 },
+  { "id": "protein-ligand-evaluation", "name": "蛋白质配体结构评测", "english_name": "Protein-ligand Structure Evaluation", "parent_id": "biomolecular-modeling", "level": 4 },
+  { "id": "prospective-blind-benchmarking", "name": "前瞻性盲测", "english_name": "Prospective Blind Benchmarking", "parent_id": "protein-ligand-evaluation", "level": 5 },
+  { "id": "multi-metric-structure-blind-tests", "name": "多指标结构盲测", "english_name": "Multi-metric Structure Blind Tests", "parent_id": "prospective-blind-benchmarking", "level": 6 },
+  { "id": "human-disease-biology", "name": "人类疾病生物学", "english_name": "Human Disease Biology", "parent_id": "ai-biology", "level": 3 },
+  { "id": "causal-target-discovery", "name": "因果靶点发现", "english_name": "Causal Target Discovery", "parent_id": "human-disease-biology", "level": 4 },
+  { "id": "multimodal-genetic-integration", "name": "多模态遗传证据整合", "english_name": "Multimodal Genetic Evidence Integration", "parent_id": "causal-target-discovery", "level": 5 },
+  { "id": "virtual-human-causal-modeling", "name": "Virtual Human 因果生物学建模", "english_name": "Virtual Human Causal Biology Modeling", "parent_id": "multimodal-genetic-integration", "level": 6 }
 ]
